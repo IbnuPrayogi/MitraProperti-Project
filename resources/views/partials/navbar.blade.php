@@ -1,60 +1,182 @@
-<header class="px-4 py-6 mx-auto shadow-md">
-    <div class="flex items-center justify-between container relative">
-        <a class="font-bold" href="">Mitra Property</a>
-        <nav>
-            <ul class="flex items-center space-x-5 font-light">
-                <li class="group relative">
-                    <button class="hover:opacity-50 group">Tipe Property
-                        <span
-                            class="icon-[ep--arrow-down] my-auto ms-1  transition-opacity duration-300 absolute mt-1.5 group-hover:opacity-0"></span>
-                        <span
-                            class="icon-[ep--arrow-up] my-auto ms-1  transition-opacity duration-300 opacity-0 mt-1.5 group-hover:opacity-100"></span>
-                    </button>
-                    <div
-                        class="absolute left-0 w-96 bg-white border border-gray-200 mt-2 hidden group-hover:block">
-                        <div class="container mx-auto px-4 py-6">
-                            <div class="grid grid-cols-3 gap-6">
-                                <div>
-                                    <h3 class="font-bold mb-4">Category 1</h3>
-                                    <ul class="space-y-2">
-                                        <li><a href="#" class="hover:underline">Sub-item 1</a></li>
-                                        <li><a href="#" class="hover:underline">Sub-item 2</a></li>
-                                        <li><a href="#" class="hover:underline">Sub-item 3</a></li>
-                                    </ul>
-                                </div>
-                                <div>
-                                    <h3 class="font-bold mb-4">Category 2</h3>
-                                    <ul class="space-y-2">
-                                        <li><a href="#" class="hover:underline">Sub-item 1</a></li>
-                                        <li><a href="#" class="hover:underline">Sub-item 2</a></li>
-                                        <li><a href="#" class="hover:underline">Sub-item 3</a></li>
-                                    </ul>
-                                </div>
-                                <div>
-                                    <h3 class="font-bold mb-4">Category 3</h3>
-                                    <ul class="space-y-2">
-                                        <li><a href="#" class="hover:underline">Sub-item 1</a></li>
-                                        <li><a href="#" class="hover:underline">Sub-item 2</a></li>
-                                        <li><a href="#" class="hover:underline">Sub-item 3</a></li>
-                                    </ul>
+<style>
+    .mega-menu {
+        display: none;
+        left: 0;
+        position: absolute;
+        text-align: left;
+        width: 100%;
+    }
+
+    .normal-menu {
+        display: none;
+        position: absolute;
+        text-align: left;
+    }
+
+    .hoverable {
+        position: static;
+    }
+
+
+
+    .hoverable:hover .mega-menu {
+        display: block;
+    }
+
+    .hoverable:hover .normal-menu {
+        display: inline-block;
+    }
+
+
+    .toggleable>label:after {
+        content: "\25BC";
+        font-size: 10px;
+        padding-left: 6px;
+        position: relative;
+        top: -1px;
+    }
+
+    .toggle-input {
+        display: none;
+    }
+
+    .toggle-input:not(checked)~.mega-menu {
+        display: none;
+    }
+
+    .toggle-input:checked~.mega-menu {
+        display: block;
+    }
+
+    .toggle-input:checked~label:after {
+        content: "\25B2";
+        font-size: 10px;
+        padding-left: 6px;
+        position: relative;
+        top: -1px;
+    }
+</style>
+</head>
+
+<body class="bg-gray-200 font-sans leading-normal tracking-normal">
+    <nav class="fixed top-0 left-0 w-full bg-white border-b-2 border-gray-300 text-gray-900 z-50">
+        <div class="container mx-auto flex justify-between">
+            <img class="h-16 my-auto" src="{{ asset('images/logo.png') }}" alt="Logo" srcset="">
+            <ul class="flex">
+                {{-- Tipe Properti --}}
+                <li class="hoverable">
+                    <a href="#" class="relative flex py-6 px-4 lg:p-6 text-sm lg:text-base font-light ">Tipe
+                        Properti <span class="icon-[ep--arrow-down] ms-1 my-auto"></span></a>
+                    <div class="p-6 mega-menu mb-16 bg-white sm:mb-0 shadow-md">
+                        <div class="container mx-auto w-full flex flex-wrap justify-start ">
+                            {{-- Right Text --}}
+                            <div class="sm:w-max lg:w-1/6 me-8 lg:me-14 mb-8">
+                                <h2 class="font-bold text-xl">Tipe Properti</h2>
+                                <p class="font-light text-md">Cari properti baru dan Secondary di Mitra Property Bogor.
+                                </p>
+                            </div>
+
+                            <div class="mb-8 inline-block">
+                                <h2 class="font-light text-red-600 text-lg mb-2">Tipe</h2>
+                                <div class="sm:grid sm:grid-cols-2 sm:gap-3 lg:flex lg:space-x-5">
+                                    {{-- Type Card --}}
+                                    <div class="inline-block p-3 ring-2 ring-slate-300 rounded-md">
+                                        <p class="px-4 py-1 rounded-full bg-slate-300 mb-2">Properti Baru</p>
+                                        <div class="flex space-x-3">
+                                            <span
+                                                class="icon-[teenyicons--house-solid] text-xl ms-1 text-red-600"></span>
+                                            <p class="inline font-semibold">Rumah</p>
+                                        </div>
+                                    </div>
+
+                                    {{-- Apartment --}}
+                                    <div class="inline-block p-3 ring-2 ring-slate-300 rounded-md">
+                                        <p class="px-4 py-1 rounded-full bg-slate-300 mb-2">Properti Baru</p>
+                                        <div class="flex space-x-3">
+                                            <span
+                                                class="icon-[ph--building-apartment-fill] text-2xl ms-1 text-red-600"></span>
+                                            <p class="inline font-semibold">Apartment</p>
+                                        </div>
+                                    </div>
+
+                                    {{-- Ruko --}}
+                                    <div class="inline-block p-3 ring-2 ring-slate-300 rounded-md">
+                                        <p class="px-4 py-1 rounded-full bg-slate-300 mb-2">Properti Baru</p>
+                                        <div class="flex space-x-3">
+                                            <span class="icon-[fa6-solid--shop] text-xl ms-1 text-red-600"></span>
+                                            <p class="inline font-semibold">Ruko</p>
+                                        </div>
+                                    </div>
+
+                                    {{-- Kavling --}}
+                                    <div class="inline-block p-3 ring-2 ring-slate-300 rounded-md">
+                                        <p class="px-4 py-1 rounded-full bg-slate-300 mb-2">Properti Baru</p>
+                                        <div class="flex space-x-3">
+                                            <span class="icon-[lucide--land-plot] text-xl ms-1 text-red-600"></span>
+                                            <p class="inline font-semibold">Kavling</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="inline-block p-3 ring-2 ring-slate-300 rounded-md">
+                                        <p class="px-4 py-1 rounded-full bg-slate-300 mb-2">Properti Baru</p>
+                                        <div class="flex space-x-3">
+                                            <span
+                                                class="icon-[streamline--warehouse-1-solid] text-xl ms-1 text-red-600"></span>
+                                            <p class="inline font-semibold">Gudang</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="inline-block p-3 ring-2 ring-slate-300 rounded-md">
+                                        <p class="px-4 py-1 rounded-full bg-slate-300 mb-2">Properti Baru</p>
+                                        <div class="flex space-x-3">
+                                            <span class="icon-[vaadin--office] text-xl ms-1 text-red-600"></span>
+                                            <p class="inline font-semibold">Office</p>
+                                        </div>
+                                    </div>
+
                                 </div>
                             </div>
+
                         </div>
                     </div>
                 </li>
 
-                <li class="flex cursor-pointer hover:opacity-50">Layanan<span
-                        class="icon-[ep--arrow-down] my-auto ms-1 "></span></li>
-                <li class="cursor-pointer hover:opacity-50">About Us</li>
-                <li class="cursor-pointer hover:opacity-50">Blog</li>
+                {{-- Layanan --}}
+                <li class="hoverable">
+                    <a href="#" class="relative flex py-6 px-4 lg:p-6 text-sm lg:text-base font-light ">Layanan
+                        <span class="icon-[ep--arrow-down] ms-1 my-auto"></span></a>
+                    <div class="normal-menu mb-16 bg-white shadow-md p-3 mx-auto rounded-md">
+                        {{-- Upper Text --}}
+
+                        <ul class="space-y-2">
+                            <li>
+                                Kerjasama Bisnis
+                            </li>
+                            <li>Kalkulator KPR</li>
+                        </ul>
+
+                    </div>
+                </li>
+
+                <li class="hoverable">
+                    <a href="#" class="relative flex py-6 px-4 lg:p-6 text-sm lg:text-base font-light ">About
+                        Us</a>
+                </li>
+
+                <li class="hoverable">
+                    <a href="#" class="relative flex py-6 px-4 lg:p-6 text-sm lg:text-base font-light ">Blog</a>
+                </li>
+
+
+
+
+
             </ul>
-        </nav>
-        <nav>
-            <ul>
-                <li class="bg-red-500 cursor-pointer rounded-lg px-4 py-2 font-semibold text-white">
+
+            <ul class="flex">
+                <li class="bg-red-500 cursor-pointer my-auto rounded-lg px-4 py-2 font-semibold text-white">
                     Contact Us
                 </li>
             </ul>
-        </nav>
-    </div>
-</header>
+        </div>
+    </nav>

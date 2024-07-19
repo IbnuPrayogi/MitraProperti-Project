@@ -100,7 +100,7 @@
         <div class="grid grid-cols-1 md:grid-cols-3 gap-x-20 gap-y-10">
             {{-- Items --}}
             <div class="flex items-center p-[1.81rem] shadow-md rounded-lg bg-zinc-300">
-                <span class="icon-[fa6-solid--house] text-5xl text-red-600"></span>
+                <img src="{{ asset('images/dummy_city.png') }}" class="w-28 rounded-full aspect-square">
                 <div class="text-sm ms-[2rem]">
                     <p class="text-gray-900 leading-none text-lg font-semibold mb-2">Jakarta</p>
                     <p class="text-gray-600">Start Cicilan</p>
@@ -109,7 +109,7 @@
             </div>
 
             <div class="flex items-center p-[1.81rem] shadow-md rounded-lg bg-zinc-300">
-                <span class="icon-[fa6-solid--house] text-5xl text-red-600"></span>
+                <img src="{{ asset('images/dummy_city.png') }}" class="w-28 rounded-full aspect-square">
                 <div class="text-sm ms-[2rem]">
                     <p class="text-gray-900 leading-none text-lg font-semibold mb-2">Jakarta</p>
                     <p class="text-gray-600">Start Cicilan</p>
@@ -118,7 +118,7 @@
             </div>
 
             <div class="flex items-center p-[1.81rem] shadow-md rounded-lg bg-zinc-300">
-                <span class="icon-[fa6-solid--house] text-5xl text-red-600"></span>
+                <img src="{{ asset('images/dummy_city.png') }}" class="w-28 rounded-full aspect-square">
                 <div class="text-sm ms-[2rem]">
                     <p class="text-gray-900 leading-none text-lg font-semibold mb-2">Jakarta</p>
                     <p class="text-gray-600">Start Cicilan</p>
@@ -127,7 +127,7 @@
             </div>
 
             <div class="flex items-center p-[1.81rem] shadow-md rounded-lg bg-zinc-300">
-                <span class="icon-[fa6-solid--house] text-5xl text-red-600"></span>
+                <img src="{{ asset('images/dummy_city.png') }}" class="w-28 rounded-full aspect-square">
                 <div class="text-sm ms-[2rem]">
                     <p class="text-gray-900 leading-none text-lg font-semibold mb-2">Jakarta</p>
                     <p class="text-gray-600">Start Cicilan</p>
@@ -135,7 +135,7 @@
                 </div>
             </div>
             <div class="flex items-center p-[1.81rem] shadow-md rounded-lg bg-zinc-300">
-                <span class="icon-[fa6-solid--house] text-5xl text-red-600"></span>
+               <img src="{{ asset('images/dummy_city.png') }}" class="w-28 rounded-full aspect-square">
                 <div class="text-sm ms-[2rem]">
                     <p class="text-gray-900 leading-none text-lg font-semibold mb-2">Jakarta</p>
                     <p class="text-gray-600">Start Cicilan</p>
@@ -144,7 +144,28 @@
             </div>
 
             <div class="flex items-center p-[1.81rem] shadow-md rounded-lg bg-zinc-300">
-                <span class="icon-[fa6-solid--house] text-5xl text-red-600"></span>
+               <img src="{{ asset('images/dummy_city.png') }}" class="w-28 rounded-full aspect-square">
+                <div class="text-sm ms-[2rem]">
+                    <p class="text-gray-900 leading-none text-lg font-semibold mb-2">Jakarta</p>
+                    <p class="text-gray-600">Start Cicilan</p>
+                    <p class="text-lg text-red-600 font-light">9 Juta</p>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+
+
+    {{-- Mitra Property Bogor of the month --}}
+    <div class="container mx-auto py-6">
+        
+        <p class="font-semibold text-lg mb-5 flex items-center"> <span class="icon-[ic--sharp-diamond] text-2xl mr-2 text-red-600"></span>Mitra Property Bogor of the Month</p>
+
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-x-20 gap-y-10">
+            {{-- Items --}}
+            <div class="flex items-center p-[1.81rem] shadow-md rounded-lg bg-zinc-300">
+                <img src="{{ asset('images/dummy_city.png') }}" class="w-28 rounded-full aspect-square">
                 <div class="text-sm ms-[2rem]">
                     <p class="text-gray-900 leading-none text-lg font-semibold mb-2">Jakarta</p>
                     <p class="text-gray-600">Start Cicilan</p>

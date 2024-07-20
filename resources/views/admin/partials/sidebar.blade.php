@@ -33,53 +33,21 @@
               </p>
             </a>
           </li>
-          <li class="nav-item has-treeview">
-            <a href="#" class="nav-link">
+          <li class="nav-item ">
+            <a href="{{ route('property.index') }}" class="nav-link">
               <i class="nav-icon fas fa-copy"></i>
               <p>
                 Property
-                <i class="fas fa-angle-left right"></i>
-                <span class="badge badge-info right">6</span>
               </p>
             </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="{{ route('property.index') }}" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Rumah</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="pages/layout/boxed.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Apartemen</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="pages/layout/fixed-sidebar.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Ruko</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="pages/layout/fixed-topnav.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Kavling</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="pages/layout/fixed-footer.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Gudang</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="pages/layout/collapsed-sidebar.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Office</p>
-                </a>
-              </li>
-            </ul>
+          </li>
+          <li class="nav-item ">
+            <a href="{{ route('blog.index') }}" class="nav-link">
+              <i class="nav-icon fas fa-copy"></i>
+              <p>
+                Blog
+              </p>
+            </a>
           </li>
 
         </ul>

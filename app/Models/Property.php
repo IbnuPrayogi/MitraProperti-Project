@@ -17,6 +17,11 @@ class Property extends Model
         'category',
         'cluster_type',
         'instalment',
+        'province',
+        'regency',
+        'district',
+        'location',
+        'village',
         'picture'
     ];
 

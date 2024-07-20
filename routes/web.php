@@ -1,9 +1,11 @@
 <?php
 
+use App\Http\Controllers\BlogController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PropertyController;
 use App\Models\Property;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\LocationController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -20,5 +22,12 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::resource('property',PropertyController::class);
+Route::resource('blog',BlogController::class);
+
+
+Route::get('/getRegencies/{provinceId}', [LocationController::class, 'getRegencies']);
+Route::get('/getDistricts/{regencyId}', [LocationController::class, 'getDistricts']);
+Route::get('/getVillages/{districtId}', [LocationController::class, 'getVillages']);
+
 
 require __DIR__.'/auth.php';

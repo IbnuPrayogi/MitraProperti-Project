@@ -6,23 +6,26 @@ use Illuminate\Foundation\Http\FormRequest;
 
 class UpdatePropertyRequest extends FormRequest
 {
-    /**
-     * Determine if the user is authorized to make this request.
-     */
-    public function authorize(): bool
+    public function authorize()
     {
-        return false;
+        return true;
     }
 
-    /**
-     * Get the validation rules that apply to the request.
-     *
-     * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string>
-     */
-    public function rules(): array
+    public function rules()
     {
         return [
-            //
+            'name' => 'sometimes|required|string|max:255',
+            'price' => 'sometimes|required|numeric',
+            'category' => 'sometimes|required|string|max:255',
+            'cluster_type' => 'sometimes|required|string|max:255',
+            'province' => 'sometimes|required|exists:provinces,id',
+            'regency' => 'sometimes|required|exists:regencies,id',
+            'district' => 'sometimes|required|exists:districts,id',
+            'village' => 'sometimes|required|exists:villages,id',
+            'location' => 'sometimes|required|string|max:255',
+            'instalment' => 'sometimes|required|numeric',
+            'picture' => 'sometimes|required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'terms' => 'sometimes|required|accepted',
         ];
     }
 }

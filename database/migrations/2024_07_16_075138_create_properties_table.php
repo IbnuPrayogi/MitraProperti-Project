@@ -16,7 +16,10 @@ return new class extends Migration
             $table->string('name');
             $table->decimal('price', 15, 2); 
             $table->string('category');
-            $table->string('cluster_type');
+            $table->string('province');
+            $table->string('regency');
+            $table->string('district');
+            $table->string('village');
             $table->string('location');
             $table->decimal('instalment', 15, 2); 
             $table->string('picture')->nullable(); 

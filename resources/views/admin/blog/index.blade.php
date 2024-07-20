@@ -30,32 +30,27 @@
           <!-- /.card-header -->
           <div class="card-body">
             <div style="height: 50;width:100">
-                <a href="{{ route('property.create') }}"><button type="button" class="btn btn-primary btn-lg">+ Add Property</button></a>
+                <a href="{{ route('blog.create') }}"><button type="button" class="btn btn-primary btn-lg">+ Add Blog</button></a>
             </div>
             
             <table id="example2" class="table table-bordered table-hover">
               <thead>
               <tr>
-                <th>Nama Properti</th>
-                <th>Harga</th>
-                <th>Cicilan</th>
-                <th>Tipe Cluster</th>
-                <th>Lokasi</th>
+                <th>judul Blog</th>
+                <th>Content</th>
+             
                 <th>Action</th>
               </tr>
               </thead>
               <tbody>
-                @foreach ($properties as $prop)
+                @foreach ($blogs as $blog)
                 <tr>
-                    <td>{{ $prop->name }}</td>
-                    <td>{{$prop->price}}
-                    </td>
-                    <td>{{$prop->instalment}}</td>
-                    <td> {{$prop->cluster_type}}</td>
-                    <td>{{$prop->location}}</td>
+                    <td>{{ $blog->title }}</td>
+                    <td>{{ substr($blog->content, 0, 100) . (strlen($blog->content) > 100 ? '...' : '') }}</td>
+                
                     <td>
-                      <a href="{{ route('property.edit', $prop->id) }}" class="btn btn-warning btn-sm">Edit</a>
-                      <form action="{{ route('property.destroy', $prop->id) }}" method="POST" style="display:inline;">
+                      <a href="{{ route('blog.edit', $blog->id) }}" class="btn btn-warning btn-sm">Edit</a>
+                      <form action="{{ route('blog.destroy', $blog->id) }}" method="POST" style="display:inline;">
                           @csrf
                           @method('DELETE')
                           <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this property?')">Delete</button>

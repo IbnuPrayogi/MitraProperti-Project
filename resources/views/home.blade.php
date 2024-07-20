@@ -184,7 +184,7 @@
                                     <span class="icon-[solar--medal-ribbons-star-line-duotone] mr-2 text-lg"></span>New
                                     Launching
                                 </div>
-                                <img src="{{ asset('images/dummy_property.png') }}" class="rounded-t-lg mb-4">
+                                <img src="{{ asset('images/dummy_property.png') }}" class="rounded-t-lg mb-4 aspect-[18/13]">
 
                                 <div class="p-4 me-16">
                                     <p class="text-red-600 text-2xl font-semibold mb-1">IDR 3 miliar*</p>
@@ -216,7 +216,7 @@
                                     <span class="icon-[solar--medal-ribbons-star-line-duotone] mr-2 text-lg"></span>New
                                     Launching
                                 </div>
-                                <img src="{{ asset('images/dummy_property.png') }}" class="rounded-t-lg mb-4">
+                                <img src="{{ asset('images/dummy_property.png') }}" class="rounded-t-lg mb-4 aspect-[18/13]">
 
                                 <div class="p-4 me-16">
                                     <p class="text-red-600 text-2xl font-semibold mb-1">IDR 3 miliar*</p>
@@ -249,7 +249,7 @@
                                     <span class="icon-[solar--medal-ribbons-star-line-duotone] mr-2 text-lg"></span>New
                                     Launching
                                 </div>
-                                <img src="{{ asset('images/dummy_property.png') }}" class="rounded-t-lg mb-4">
+                                <img src="{{ asset('images/dummy_property.png') }}" class="rounded-t-lg mb-4 aspect-[18/13]">
 
                                 <div class="p-4 me-16">
                                     <p class="text-red-600 text-2xl font-semibold mb-1">IDR 3 miliar*</p>

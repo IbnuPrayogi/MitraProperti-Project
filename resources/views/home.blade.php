@@ -7,6 +7,12 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     @vite('resources/css/app.css')
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <style>
+        .swiper-pagination-bullet {
+            background: red;
+        }
+    </style>
 </head>
 
 <body>
@@ -52,7 +58,7 @@
 
     {{-- 4 Card bar --}}
     <div class="container mx-auto py-6">
-        <p class="font-semibold text-lg mb-5">Tawaran Kemudahan dari Mitra Property Bogor</p>
+        <p class="font-semibold text-xl mb-5">Tawaran Kemudahan dari Mitra Property Bogor</p>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-x-20 gap-y-10">
             <div class="flex items-center p-[1.81rem] shadow-md rounded-lg">
                 <span class="icon-[fa6-solid--house] text-5xl text-red-600"></span>
@@ -93,9 +99,9 @@
     </div>
 
 
-    {{-- Find Your Favorite Hunian --}}
+    {{-- Cities --}}
     <div class="container mx-auto py-6">
-        <p class="font-semibold text-lg mb-5">Cari Hunian Favoritmu</p>
+        <p class="font-semibold text-xl mb-5">Cari Hunian Favoritmu</p>
 
         <div class="grid grid-cols-1 md:grid-cols-3 gap-x-20 gap-y-10">
             {{-- Items --}}
@@ -135,7 +141,7 @@
                 </div>
             </div>
             <div class="flex items-center p-[1.81rem] shadow-md rounded-lg bg-zinc-300">
-               <img src="{{ asset('images/dummy_city.png') }}" class="w-28 rounded-full aspect-square">
+                <img src="{{ asset('images/dummy_city.png') }}" class="w-28 rounded-full aspect-square">
                 <div class="text-sm ms-[2rem]">
                     <p class="text-gray-900 leading-none text-lg font-semibold mb-2">Jakarta</p>
                     <p class="text-gray-600">Start Cicilan</p>
@@ -143,27 +149,6 @@
                 </div>
             </div>
 
-            <div class="flex items-center p-[1.81rem] shadow-md rounded-lg bg-zinc-300">
-               <img src="{{ asset('images/dummy_city.png') }}" class="w-28 rounded-full aspect-square">
-                <div class="text-sm ms-[2rem]">
-                    <p class="text-gray-900 leading-none text-lg font-semibold mb-2">Jakarta</p>
-                    <p class="text-gray-600">Start Cicilan</p>
-                    <p class="text-lg text-red-600 font-light">9 Juta</p>
-                </div>
-            </div>
-
-
-        </div>
-    </div>
-
-
-    {{-- Mitra Property Bogor of the month --}}
-    <div class="container mx-auto py-6">
-        
-        <p class="font-semibold text-lg mb-5 flex items-center"> <span class="icon-[ic--sharp-diamond] text-2xl mr-2 text-red-600"></span>Mitra Property Bogor of the Month</p>
-
-        <div class="grid grid-cols-1 md:grid-cols-4 gap-x-20 gap-y-10">
-            {{-- Items --}}
             <div class="flex items-center p-[1.81rem] shadow-md rounded-lg bg-zinc-300">
                 <img src="{{ asset('images/dummy_city.png') }}" class="w-28 rounded-full aspect-square">
                 <div class="text-sm ms-[2rem]">
@@ -178,7 +163,149 @@
     </div>
 
 
+    {{-- Mitra Property Bogor of the month --}}
+    <div class="container mx-auto py-6">
 
+        <p class="font-semibold text-xl mb-10 flex items-center"> <span
+                class="icon-[ic--sharp-diamond] text-3xl mr-2 text-red-600"></span>Mitra Property Bogor of the Month</p>
+
+        <div class="swiper mySwiper">
+            <div class="swiper-wrapper pb-10">
+                <div class="swiper-slide">
+                    <div class="flex space-x-10 mx-auto">
+                        {{-- Items --}}
+                        @for ($i = 0; $i < 4; $i++)
+                            <div class="min-w-[300px] items-center shadow-md rounded-lg inline-block relative">
+                                <div
+                                    class="absolute bg-red-600 text-white -right-3 rounded-e-full rounded-t-full h-14 px-2 top-1 z-[-1]">
+                                </div>
+                                <div
+                                    class="absolute bg-red-600 text-white right-0 px-4 py-2 rounded-s-md top-5 shadow-md flex items-center">
+                                    <span class="icon-[solar--medal-ribbons-star-line-duotone] mr-2 text-lg"></span>New
+                                    Launching
+                                </div>
+                                <img src="{{ asset('images/dummy_property.png') }}" class="rounded-t-lg mb-4">
+
+                                <div class="p-4 me-16">
+                                    <p class="text-red-600 text-2xl font-semibold mb-1">IDR 3 miliar*</p>
+                                    <p class="text-gray-900 leading-none text-2xl font-semibold mb-4">Spring Residence
+                                        at
+                                        Sentul
+                                        City</p>
+                                    <p class="text-gray-600 mb-1 text-lg font-light me-5">Tanda DP, cicilan 15
+                                        Juta/Bulan
+                                    </p>
+                                    <p class="text-lg text-gray-400 font-light flex items-center">
+                                        <span class="icon-[ph--map-pin-light] me-2"></span>Bekasi, Indonesia
+                                    </p>
+                                </div>
+                            </div>
+                        @endfor
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="flex space-x-10 container mx-auto">
+                        {{-- Items --}}
+                        @for ($i = 0; $i < 4; $i++)
+                            <div class="min-w-[300px] items-center shadow-md rounded-lg inline-block relative">
+                                <div
+                                    class="absolute bg-red-600 text-white -right-3 rounded-e-full rounded-t-full h-14 px-2 top-1 z-[-1]">
+                                </div>
+                                <div
+                                    class="absolute bg-red-600 text-white right-0 px-4 py-2 rounded-s-md top-5 shadow-md flex items-center">
+                                    <span class="icon-[solar--medal-ribbons-star-line-duotone] mr-2 text-lg"></span>New
+                                    Launching
+                                </div>
+                                <img src="{{ asset('images/dummy_property.png') }}" class="rounded-t-lg mb-4">
+
+                                <div class="p-4 me-16">
+                                    <p class="text-red-600 text-2xl font-semibold mb-1">IDR 3 miliar*</p>
+                                    <p class="text-gray-900 leading-none text-2xl font-semibold mb-4">Spring Residence
+                                        at
+                                        Sentul
+                                        City</p>
+                                    <p class="text-gray-600 mb-1 text-lg font-light me-5">Tanda DP, cicilan 15
+                                        Juta/Bulan
+                                    </p>
+                                    <p class="text-lg text-gray-400 font-light flex items-center">
+                                        <span class="icon-[ph--map-pin-light] me-2"></span>Bekasi, Indonesia
+                                    </p>
+                                </div>
+                            </div>
+                        @endfor
+                    </div>
+                </div>
+
+                <div class="swiper-slide">
+                    <div class="flex space-x-10 container mx-auto">
+                        {{-- Items --}}
+                        @for ($i = 0; $i < 4; $i++)
+                            <div class="min-w-[300px] items-center shadow-md rounded-lg inline-block relative">
+                                <div
+                                    class="absolute bg-red-600 text-white -right-3 rounded-e-full rounded-t-full h-14 px-2 top-1 z-[-1]">
+                                </div>
+                                <div
+                                    class="absolute bg-red-600 text-white right-0 px-4 py-2 rounded-s-md top-5 shadow-md flex items-center">
+                                    <span class="icon-[solar--medal-ribbons-star-line-duotone] mr-2 text-lg"></span>New
+                                    Launching
+                                </div>
+                                <img src="{{ asset('images/dummy_property.png') }}" class="rounded-t-lg mb-4">
+
+                                <div class="p-4 me-16">
+                                    <p class="text-red-600 text-2xl font-semibold mb-1">IDR 3 miliar*</p>
+                                    <p class="text-gray-900 leading-none text-2xl font-semibold mb-4">Spring Residence
+                                        at
+                                        Sentul
+                                        City</p>
+                                    <p class="text-gray-600 mb-1 text-lg font-light me-5">Tanda DP, cicilan 15
+                                        Juta/Bulan
+                                    </p>
+                                    <p class="text-lg text-gray-400 font-light flex items-center">
+                                        <span class="icon-[ph--map-pin-light] me-2"></span>Bekasi, Indonesia
+                                    </p>
+                                </div>
+                            </div>
+                        @endfor
+                    </div>
+                </div>
+            </div>
+            <div class="swiper-pagination"></div>
+        </div>
+
+    </div>
+
+    {{-- Main Content --}}
+    <div class="container mx-auto py-6">
+
+        <p class="font-semibold text-xl mb-10 flex items-center"> <span
+                class="icon-[mdi--thumb-up] text-3xl mr-2 text-red-600"></span>Rekomendasi Mitra Property Bogor</p>
+
+        {{-- Chip --}}
+
+
+        {{-- Cards Grid --}}
+
+
+    </div>
+
+
+
+
+    <!-- Swiper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+    <!-- Initialize Swiper -->
+    <script>
+        var swiper = new Swiper(".mySwiper", {
+            slidesPerView: 1,
+            spaceBetween: 30,
+            freeMode: false,
+            pagination: {
+                el: ".swiper-pagination",
+                clickable: true,
+            },
+        });
+    </script>
 </body>
 
 </html>

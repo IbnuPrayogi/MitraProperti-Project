@@ -15,7 +15,7 @@
     </style>
 </head>
 
-<body>
+<body class="bg-white">
     {{-- Navbar --}}
     @include('partials.navbar')
 
@@ -105,7 +105,7 @@
 
         <div class="grid grid-cols-1 md:grid-cols-3 gap-x-20 gap-y-10">
             {{-- Items --}}
-            <div class="flex items-center p-[1.81rem] shadow-md rounded-lg bg-zinc-300">
+            <div class="flex items-center p-[1.81rem] shadow-md rounded-lg bg-[#f2f2f2]">
                 <img src="{{ asset('images/dummy_city.png') }}" class="w-28 rounded-full aspect-square">
                 <div class="text-sm ms-[2rem]">
                     <p class="text-gray-900 leading-none text-lg font-semibold mb-2">Jakarta</p>
@@ -114,7 +114,7 @@
                 </div>
             </div>
 
-            <div class="flex items-center p-[1.81rem] shadow-md rounded-lg bg-zinc-300">
+            <div class="flex items-center p-[1.81rem] shadow-md rounded-lg bg-[#f2f2f2]">
                 <img src="{{ asset('images/dummy_city.png') }}" class="w-28 rounded-full aspect-square">
                 <div class="text-sm ms-[2rem]">
                     <p class="text-gray-900 leading-none text-lg font-semibold mb-2">Jakarta</p>
@@ -123,7 +123,7 @@
                 </div>
             </div>
 
-            <div class="flex items-center p-[1.81rem] shadow-md rounded-lg bg-zinc-300">
+            <div class="flex items-center p-[1.81rem] shadow-md rounded-lg bg-[#f2f2f2]">
                 <img src="{{ asset('images/dummy_city.png') }}" class="w-28 rounded-full aspect-square">
                 <div class="text-sm ms-[2rem]">
                     <p class="text-gray-900 leading-none text-lg font-semibold mb-2">Jakarta</p>
@@ -132,7 +132,7 @@
                 </div>
             </div>
 
-            <div class="flex items-center p-[1.81rem] shadow-md rounded-lg bg-zinc-300">
+            <div class="flex items-center p-[1.81rem] shadow-md rounded-lg bg-[#f2f2f2]">
                 <img src="{{ asset('images/dummy_city.png') }}" class="w-28 rounded-full aspect-square">
                 <div class="text-sm ms-[2rem]">
                     <p class="text-gray-900 leading-none text-lg font-semibold mb-2">Jakarta</p>
@@ -140,7 +140,7 @@
                     <p class="text-lg text-red-600 font-light">9 Juta</p>
                 </div>
             </div>
-            <div class="flex items-center p-[1.81rem] shadow-md rounded-lg bg-zinc-300">
+            <div class="flex items-center p-[1.81rem] shadow-md rounded-lg bg-[#f2f2f2]">
                 <img src="{{ asset('images/dummy_city.png') }}" class="w-28 rounded-full aspect-square">
                 <div class="text-sm ms-[2rem]">
                     <p class="text-gray-900 leading-none text-lg font-semibold mb-2">Jakarta</p>
@@ -149,7 +149,7 @@
                 </div>
             </div>
 
-            <div class="flex items-center p-[1.81rem] shadow-md rounded-lg bg-zinc-300">
+            <div class="flex items-center p-[1.81rem] shadow-md rounded-lg bg-[#f2f2f2]">
                 <img src="{{ asset('images/dummy_city.png') }}" class="w-28 rounded-full aspect-square">
                 <div class="text-sm ms-[2rem]">
                     <p class="text-gray-900 leading-none text-lg font-semibold mb-2">Jakarta</p>
@@ -184,7 +184,8 @@
                                     <span class="icon-[solar--medal-ribbons-star-line-duotone] mr-2 text-lg"></span>New
                                     Launching
                                 </div>
-                                <img src="{{ asset('images/dummy_property.png') }}" class="rounded-t-lg mb-4 aspect-[18/13]">
+                                <img src="{{ asset('images/dummy_property.png') }}"
+                                    class="rounded-t-lg mb-4 aspect-[18/13]">
 
                                 <div class="p-4 me-16">
                                     <p class="text-red-600 text-2xl font-semibold mb-1">IDR 3 miliar*</p>
@@ -216,7 +217,8 @@
                                     <span class="icon-[solar--medal-ribbons-star-line-duotone] mr-2 text-lg"></span>New
                                     Launching
                                 </div>
-                                <img src="{{ asset('images/dummy_property.png') }}" class="rounded-t-lg mb-4 aspect-[18/13]">
+                                <img src="{{ asset('images/dummy_property.png') }}"
+                                    class="rounded-t-lg mb-4 aspect-[18/13]">
 
                                 <div class="p-4 me-16">
                                     <p class="text-red-600 text-2xl font-semibold mb-1">IDR 3 miliar*</p>
@@ -249,7 +251,8 @@
                                     <span class="icon-[solar--medal-ribbons-star-line-duotone] mr-2 text-lg"></span>New
                                     Launching
                                 </div>
-                                <img src="{{ asset('images/dummy_property.png') }}" class="rounded-t-lg mb-4 aspect-[18/13]">
+                                <img src="{{ asset('images/dummy_property.png') }}"
+                                    class="rounded-t-lg mb-4 aspect-[18/13]">
 
                                 <div class="p-4 me-16">
                                     <p class="text-red-600 text-2xl font-semibold mb-1">IDR 3 miliar*</p>
@@ -281,20 +284,86 @@
                 class="icon-[mdi--thumb-up] text-3xl mr-2 text-red-600"></span>Rekomendasi Mitra Property Bogor</p>
 
         {{-- Chip --}}
+        <div class="space-x-8 mb-10">
+            <button class="py-2 px-4 bg-red-600 text-white rounded-md">
+                Untuk Kamu
+            </button>
 
+            <button class="py-2 px-4  text-black rounded-md">
+                Jakarta
+            </button>
+
+            <button class="py-2 px-4  text-black rounded-md">
+                Tangerang
+            </button>
+
+            <button class="py-2 px-4  text-black rounded-md">
+                Bekasi
+            </button>
+
+            <button class="py-2 px-4  text-black rounded-md">
+                Depok
+            </button>
+
+            <button class="py-2 px-4  text-black rounded-md">
+                Bandung
+            </button>
+
+            <button class="py-2 px-4  text-black rounded-md">
+                Bogor
+            </button>
+
+            <button class="py-2 px-4  text-black rounded-md">
+                Cibubur
+            </button>
+
+            <button class="py-2 px-4  text-black rounded-md">
+                Surabaya
+            </button>
+
+            <button class="py-2 px-4  text-black rounded-md">
+                PIK
+            </button>
+
+
+        </div>
 
         {{-- Cards Grid --}}
+        <div class="grid grid-cols-4 gap-10 container mx-auto">
+            {{-- Items --}}
+            @for ($i = 0; $i < 16; $i++)
+                <div class="min-w-[300px] items-center shadow-md rounded-lg inline-block relative">
 
+                    <img src="{{ asset('images/dummy_property.png') }}" class="rounded-t-lg mb-4 aspect-[18/13]">
 
+                    <div class="p-4 me-16">
+                        <p class="text-red-600 text-2xl font-semibold mb-1">IDR 3 miliar*</p>
+                        <p class="text-gray-900 leading-none text-2xl font-semibold mb-4">Spring Residence
+                            at
+                            Sentul
+                            City</p>
+                        <p class="text-gray-600 mb-1 text-lg font-light me-5">Tanda DP, cicilan 15
+                            Juta/Bulan
+                        </p>
+                        <p class="text-lg text-gray-400 font-light flex items-center">
+                            <span class="icon-[ph--map-pin-light] me-2"></span>Bekasi, Indonesia
+                        </p>
+                    </div>
+                </div>
+            @endfor
+        </div>
     </div>
 
+    {{-- Footer --}}
+    @include('partials.footer')
 
 
 
-    <!-- Swiper JS -->
+
+    {{-- Swiper JS  --}}
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
-    <!-- Initialize Swiper -->
+    {{-- Initialize Swiper --}}
     <script>
         var swiper = new Swiper(".mySwiper", {
             slidesPerView: 1,

@@ -31,3 +31,10 @@ Route::get('/getVillages/{districtId}', [LocationController::class, 'getVillages
 
 
 require __DIR__.'/auth.php';
+
+
+
+
+Route::get('/', function () {
+    return view('home');
+});

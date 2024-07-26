@@ -40,11 +40,29 @@
                                 <input type="text" class="form-control" id="name" name="name" placeholder="Enter property name" required>
                             </div>
 
-                            <!-- Price Field -->
                             <div class="form-group">
-                                <label for="price">Price</label>
-                                <input type="number" step="0.01" class="form-control" id="price" name="price" placeholder="Enter price" required>
+                                <label for="description">Description</label>
+                                <input type="text" class="form-control" id="description" name="description" placeholder="Enter property description" required>
                             </div>
+
+                            <!-- Price Field -->
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="price">Price</label>
+                                        <input type="number" step="0.01" class="form-control" id="price" name="price" placeholder="Enter price" required>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="instalment">Instalment / Month</label>
+                                        <input type="number" step="0.01" class="form-control" id="instalment" name="instalment" placeholder="Enter instalment amount" required>
+                                    </div>
+                                </div>
+                            </div>
+                                
+                            
+                            
 
                             <!-- Category Field -->
                             <div class="form-group">
@@ -58,52 +76,203 @@
                                 <input type="text" class="form-control" id="cluster_type" name="cluster_type" placeholder="Enter cluster type" required>
                             </div>
 
-                            <!-- Province Select -->
-                            <div class="form-group">
-                                <label for="provincies">Province</label>
-                                <select class="form-control" id="provincies" name="province" required>
-                                    <option value="">Select Province</option>
-                                    @foreach ($provincies as $province)
-                                        <option value="{{ $province->id }}">{{ $province->name }}</option>
-                                    @endforeach
-                                </select>
+                            <div class=""></div>
+
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="provincies">Province</label>
+                                            <select class="form-control" id="provincies" name="province" required>
+                                                <option value="">Select Province</option>
+                                                @foreach ($provincies as $province)
+                                                    <option value="{{ $province->id }}">{{ $province->name }}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                    </div>
+                            
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="regencies">Regency</label>
+                                            <select class="form-control" id="regencies" name="regency" required>
+                                                <option value="">Select Regency</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="districts">District</label>
+                                            <select class="form-control" id="districts" name="district" required>
+                                                <option value="">Select District</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                            
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="villages">Village</label>
+                                            <select class="form-control" id="villages" name="village" required>
+                                                <option value="">Select Village</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
 
-                            <!-- Regency Select -->
-                            <div class="form-group">
-                                <label for="regencies">Regency</label>
-                                <select class="form-control" id="regencies" name="regency" required>
-                                    <option value="">Select Regency</option>
-                                </select>
-                            </div>
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="kamar_mandi">Kamar Mandi</label>
+                                            <input type="number" class="form-control" id="kamar_mandi" name="toilet" required>
+                                        </div>
+                                    </div>
+                            
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="kamar_tidur">Kamar Tidur</label>
+                                            <input type="number" class="form-control" id="kamar_tidur" name="bedroom" required>
+                                        </div>
+                                    </div>
+                                </div>
+                            
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="surface_area">Luas Tanah</label>
+                                            <input type="number" class="form-control" id="surface_area" name="surface_area" required>
+                                        </div>
+                                    </div>
+                            
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="building_area">Luas Bangunan</label>
+                                            <input type="number" class="form-control" id="building_area" name="building_area" required>
+                                        </div>
+                                    </div>
+                                </div>
 
-                            <!-- District Select -->
-                            <div class="form-group">
-                                <label for="districts">District</label>
-                                <select class="form-control" id="districts" name="district" required>
-                                    <option value="">Select District</option>
-                                </select>
-                            </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="carport">Carport</label>
+                                            <input type="number" class="form-control" id="carport" name="carport" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="floor">Floor</label>
+                                            <input type="number" class="form-control" id="floor" name="floor" required>
+                                        </div>
+                                    </div>
 
-                            <!-- Village Select -->
-                            <div class="form-group">
-                                <label for="villages">Village</label>
-                                <select class="form-control" id="villages" name="village" required>
-                                    <option value="">Select Village</option>
-                                </select>
+                                </div>
                             </div>
+                            
+                            
 
                             <!-- Location Field -->
                             <div class="form-group">
                                 <label for="location">Complete Address</label>
                                 <input type="text" class="form-control" id="location" name="location" placeholder="Enter location" required>
                             </div>
+                            
+                            <!--Facility -->
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="form-group form-check">
+                                            <input type="hidden" name="mosque" value="0">
+                                            <input type="checkbox" class="form-check-input" id="mosque" name="mosque" value="1">
+                                            <label class="form-check-label" for="mosque">Mosque</label>
+                                        </div>
+                                    </div>
+                            
+                                    <div class="col-md-4">
+                                        <div class="form-group form-check">
+                                            <input type="hidden" name="jogging" value="0">
+                                            <input type="checkbox" class="form-check-input" id="jogging" name="jogging" value="1">
+                                            <label class="form-check-label" for="jogging">Jogging</label>
+                                        </div>
+                                    </div>
+                            
+                                    <div class="col-md-4">
+                                        <div class="form-group form-check">
+                                            <input type="hidden" name="sports" value="0">
+                                            <input type="checkbox" class="form-check-input" id="sports" name="sports" value="1">
+                                            <label class="form-check-label" for="sports">Sports</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="form-group form-check">
+                                            <input type="hidden" name="child" value="0">
+                                            <input type="checkbox" class="form-check-input" id="child" name="child" value="1">
+                                            <label class="form-check-label" for="child">Child</label>
+                                        </div>
+                                    </div>
+                            
+                                    <div class="col-md-4">
+                                        <div class="form-group form-check">
+                                            <input type="hidden" name="pool" value="0">
+                                            <input type="checkbox" class="form-check-input" id="pool" name="pool" value="1">
+                                            <label class="form-check-label" for="pool">Pool</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <div class="form-group">
+                                        <label for="area">Nearest Place</label>
+                                        <input type="text" class="form-control" id="area" name="area1" required>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label for="distance">Distance</label>
+                                        <input type="number" class="form-control" id="distance" name="distance1" required>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" id="area" name="area2" required>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <input type="number" class="form-control" id="area" name="distance2" required>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" id="area" name="area3" required>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <input type="number" class="form-control" id="area" name="distance3" required>
+                                    </div>
+                                </div>
+                            </div>
+                       
+                            
 
                             <!-- Instalment Field -->
-                            <div class="form-group">
-                                <label for="instalment">Instalment</label>
-                                <input type="number" step="0.01" class="form-control" id="instalment" name="instalment" placeholder="Enter instalment amount" required>
-                            </div>
+                            
 
                             <!-- Picture Field -->
                             <div class="form-group">

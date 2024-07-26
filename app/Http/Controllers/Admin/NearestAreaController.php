@@ -1,10 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
-use Illuminate\Http\Request;
+use App\Models\NearestArea;
+use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreNearestAreaRequest;
+use App\Http\Requests\UpdateNearestAreaRequest;
 
-class DashboardController extends Controller
+class NearestAreaController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -25,7 +28,7 @@ class DashboardController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreNearestAreaRequest $request)
     {
         //
     }
@@ -33,7 +36,7 @@ class DashboardController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(NearestArea $nearestArea)
     {
         //
     }
@@ -41,7 +44,7 @@ class DashboardController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(NearestArea $nearestArea)
     {
         //
     }
@@ -49,7 +52,7 @@ class DashboardController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(UpdateNearestAreaRequest $request, NearestArea $nearestArea)
     {
         //
     }
@@ -57,7 +60,7 @@ class DashboardController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(NearestArea $nearestArea)
     {
         //
     }

@@ -1,12 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
-use App\Http\Requests\StoreNearestAreaRequest;
-use App\Http\Requests\UpdateNearestAreaRequest;
-use App\Models\NearestArea;
+use App\Models\About;
+use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreAboutRequest;
+use App\Http\Requests\UpdateAboutRequest;
 
-class NearestAreaController extends Controller
+class AboutController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -27,7 +28,7 @@ class NearestAreaController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreNearestAreaRequest $request)
+    public function store(StoreAboutRequest $request)
     {
         //
     }
@@ -35,7 +36,7 @@ class NearestAreaController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(NearestArea $nearestArea)
+    public function show(About $about)
     {
         //
     }
@@ -43,7 +44,7 @@ class NearestAreaController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(NearestArea $nearestArea)
+    public function edit(About $about)
     {
         //
     }
@@ -51,7 +52,7 @@ class NearestAreaController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateNearestAreaRequest $request, NearestArea $nearestArea)
+    public function update(UpdateAboutRequest $request, About $about)
     {
         //
     }
@@ -59,7 +60,7 @@ class NearestAreaController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(NearestArea $nearestArea)
+    public function destroy(About $about)
     {
         //
     }

@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\PropertyController;
 use App\Models\Property;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\LocationController;
+use App\Http\Controllers\User\UserDashboardController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -27,6 +28,10 @@ Route::middleware('auth')->group(function () {
 });
 
 
+Route::resource('userdashboard',UserDashboardController::class);
+
+
+
 
 
 
@@ -38,5 +43,5 @@ require __DIR__.'/auth.php';
 
 
 Route::get('/', function () {
-    return view('home');
+    return view('user.home');
 });

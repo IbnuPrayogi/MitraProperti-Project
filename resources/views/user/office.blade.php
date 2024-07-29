@@ -16,12 +16,11 @@
 <body class="bg-white">
     @include('partials.navbar')
     <div class="relative">
-        <img src="{{ asset('images/rumah_banner.png') }}" class="w-full pt-[4rem] z-0">
-        <div class="container absolute inset-x-[36rem]  top-[16rem] z-10  w-[40rem] ">
-            <p class="text-4xl font-semibold ">Temui Rumah Idamanmu Sekarang!</p>
-            <p class="text-lg mt-4">Wujudkan mimpi memiliki rumah idamanmu bersama Linktown. Linktown akan
-                membantumu dengan pilihan hunian yang sangat menarik!
-            </p>
+        <img src="{{ asset('images/ruko_banner.png') }}" class="w-full pt-[4rem] z-0">
+        <div class="container absolute inset-x-[36rem]  top-[14rem] z-10  w-[40rem] ">
+            <p class="text-4xl font-semibold ">Pilih Kantor Terbaik di Lokasi Strategis untuk Bisnis Anda!</p>
+            <p class="text-lg mt-4">Wujudkan mimpi memiliki kantor idamanmu bersama Mitra Property Bogor. Mitra Property
+                Bogor akan membantumu dengan pilihan hunian yang sangat menarik!</p>
         </div>
 
 
@@ -31,7 +30,7 @@
                 <div class="bg-red-500 p-2 rounded-full h-10 items-center"><span
                         class="icon-[fa6-solid--house] text-xl text-white"></span> </div>
                 <div class="block ms-4">
-                    <p class="font-semibold text-2xl">Cari Rumah yang anda inginkan</p>
+                    <p class="font-semibold text-2xl">Cari Office yang anda inginkan</p>
                     <p class="text-gray-400">Filter daerah Rumah dan harga Rumah akan memudahkan Anda untuk mendapatkan
                         Rumah spesifik Anda.</p>
                 </div>
@@ -74,7 +73,7 @@
 
     {{-- Path --}}
     <div class="container flex items-center space-x-2 mt-28 mx-auto bg-[#F4BDB9] p-4 rounded-lg text-gray-600">
-        @foreach ([['name' => 'Home', 'url' => '/'], ['name' => 'Rumah', 'url' => '/rumah']] as $link)
+        @foreach ([['name' => 'Home', 'url' => '/'], ['name' => 'Office', 'url' => '/office']] as $link)
             @if ($loop->last)
                 <span>{{ $link['name'] }}</span>
             @else
@@ -118,6 +117,7 @@
             </div>
         @endfor
     </div>
+
     @include('partials.footer')
 
 

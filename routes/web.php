@@ -36,9 +36,14 @@ require __DIR__.'/auth.php';
 
 
 Route::get('/', function () {
-    return view('home');
+    return view('user.home');
 });
 
 Route::get('/detail', function () {
-    return view('detail');
+    return view('user.detail');
+});
+
+
+Route::get('/rumah', function () {
+    return view('user.rumah');
 });

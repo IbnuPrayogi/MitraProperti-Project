@@ -80,24 +80,28 @@
                                 <h2 class="font-light text-red-600 text-lg mb-2">Tipe</h2>
                                 <div class="sm:grid sm:grid-cols-2 sm:gap-3 lg:flex lg:space-x-5">
                                     {{-- Type Card --}}
-                                    <div class="inline-block p-3 ring-2 ring-slate-300 rounded-md">
-                                        <p class="px-4 py-1 rounded-full bg-slate-300 mb-2">Properti Baru</p>
-                                        <div class="flex space-x-3">
-                                            <span
-                                                class="icon-[teenyicons--house-solid] text-xl ms-1 text-red-600"></span>
-                                            <p class="inline font-semibold">Rumah</p>
+                                    <a href="/rumah">
+                                        <div class="inline-block p-3 ring-2 ring-slate-300 rounded-md">
+                                            <p class="px-4 py-1 rounded-full bg-slate-300 mb-2">Properti Baru</p>
+                                            <div class="flex space-x-3">
+                                                <span
+                                                    class="icon-[teenyicons--house-solid] text-xl ms-1 text-red-600"></span>
+                                                <p class="inline font-semibold">Rumah</p>
+                                            </div>
                                         </div>
-                                    </div>
+                                    </a>
 
                                     {{-- Apartment --}}
-                                    <div class="inline-block p-3 ring-2 ring-slate-300 rounded-md">
-                                        <p class="px-4 py-1 rounded-full bg-slate-300 mb-2">Properti Baru</p>
-                                        <div class="flex space-x-3">
-                                            <span
-                                                class="icon-[ph--building-apartment-fill] text-2xl ms-1 text-red-600"></span>
-                                            <p class="inline font-semibold">Apartment</p>
+                                    <a href="/apartment">
+                                        <div class="inline-block p-3 ring-2 ring-slate-300 rounded-md">
+                                            <p class="px-4 py-1 rounded-full bg-slate-300 mb-2">Properti Baru</p>
+                                            <div class="flex space-x-3">
+                                                <span
+                                                    class="icon-[ph--building-apartment-fill] text-2xl ms-1 text-red-600"></span>
+                                                <p class="inline font-semibold">Apartment</p>
+                                            </div>
                                         </div>
-                                    </div>
+                                    </a>
 
                                     {{-- Ruko --}}
                                     <div class="inline-block p-3 ring-2 ring-slate-300 rounded-md">

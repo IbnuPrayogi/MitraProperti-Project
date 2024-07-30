@@ -13,7 +13,7 @@
 </head>
 
 <body class="bg-white font-sans">
-    @include('partials.navbar')
+    @include('user.partials.navbar')
     <div class="bg-[#F7F7F7] pt-24 pb-12">
         {{-- Path --}}
         <div class="container flex items-center space-x-2 mx-auto bg-[#F4BDB9] p-4 rounded-lg text-gray-600">
@@ -186,7 +186,7 @@
     </div>
 
     {{-- Footer --}}
-    @include('partials.footer')
+    @include('user.partials.footer')
 
 
     {{-- Swiper JS  --}}

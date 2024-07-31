@@ -117,7 +117,7 @@
             </div>
         @endfor
     </div>
-    @include('user.partials.footer')
+    @include('partials.footer')
 
 
 

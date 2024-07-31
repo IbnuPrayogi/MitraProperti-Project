@@ -76,3 +76,8 @@ Route::get('/office', function () {
 Route::get('/contact', function () {
     return view('user.contact');
 });
+
+
+Route::get('/about', function () {
+    return view('user.about-us');
+});

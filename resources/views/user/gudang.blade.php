@@ -14,7 +14,7 @@
 </head>
 
 <body class="bg-white">
-    @include('partials.navbar')
+    @include('user.partials.navbar')
     <div class="relative">
         <img src="{{ asset('images/gudang_banner.png') }}" class="w-full pt-[4rem] z-0">
         <div class="container absolute inset-x-[6rem]  top-[16rem] z-10  w-[40rem] ">
@@ -30,7 +30,7 @@
                 <div class="bg-red-500 p-2 rounded-full h-10 items-center"><span
                         class="icon-[fa6-solid--house] text-xl text-white"></span> </div>
                 <div class="block ms-4">
-                    <p class="font-semibold text-2xl">Cari Apartment yang anda inginkan</p>
+                    <p class="font-semibold text-2xl">Cari Gudang yang anda inginkan</p>
                     <p class="text-gray-400">Filter daerah Rumah dan harga Rumah akan memudahkan Anda untuk mendapatkan
                         Rumah spesifik Anda.</p>
                 </div>
@@ -117,7 +117,7 @@
             </div>
         @endfor
     </div>
-    @include('partials.footer')
+    @include('user.partials.footer')
 
 
 

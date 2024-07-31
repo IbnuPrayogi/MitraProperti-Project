@@ -61,7 +61,9 @@
 <body class="bg-gray-200 font-sans leading-normal tracking-normal">
     <nav class="fixed top-0 left-0 w-full bg-white border-b-2 border-gray-300 text-gray-900 z-50">
         <div class="container mx-auto flex justify-between">
-            <img class="h-16 my-auto" src="{{ asset('images/logo.png') }}" alt="Logo" srcset="">
+            <a href="/">
+                <img class="h-16 my-auto" src="{{ asset('images/logo.png') }}" alt="Logo" srcset="">
+            </a>
             <ul class="flex">
                 {{-- Tipe Properti --}}
                 <li class="hoverable">
@@ -185,10 +187,12 @@
 
             </ul>
 
-            <ul class="flex">
-                <li class="bg-red-500 cursor-pointer my-auto rounded-lg px-4 py-2 font-semibold text-white">
-                    Contact Us
-                </li>
-            </ul>
+            <a href="/contact" class="flex">
+                <ul class="flex">
+                    <li class="bg-red-500 cursor-pointer my-auto rounded-lg px-4 py-2 font-semibold text-white">
+                        Contact Us
+                    </li>
+                </ul>
+            </a>
         </div>
     </nav>

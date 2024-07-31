@@ -14,7 +14,7 @@
 </head>
 
 <body class="bg-white">
-    @include('partials.navbar')
+    @include('user.partials.navbar')
     <div class="relative">
         <img src="{{ asset('images/gudang_banner.png') }}" class="w-full pt-[4rem] z-0">
         <div class="container absolute inset-x-[6rem]  top-[16rem] z-10  w-[40rem] ">
@@ -117,7 +117,7 @@
             </div>
         @endfor
     </div>
-    @include('partials.footer')
+    @include('user.partials.footer')
 
 
 

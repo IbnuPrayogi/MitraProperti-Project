@@ -71,3 +71,8 @@ Route::get('/gudang', function () {
 Route::get('/office', function () {
     return view('user.office');
 });
+
+
+Route::get('/contact', function () {
+    return view('user.contact');
+});

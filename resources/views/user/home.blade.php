@@ -8,6 +8,8 @@
     <title>Document</title>
     @vite('resources/css/app.css')
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap"
+        rel="stylesheet">
     <style>
         .swiper-pagination-bullet {
             background: red;
@@ -17,7 +19,7 @@
 
 <body class="bg-white">
     {{-- Navbar --}}
-    @include('partials.navbar')
+    @include('user.partials.navbar')
 
     {{-- Hero Image --}}
     <div class="bg-center bg-cover" style="background-image: url('{{ asset('images/backgroundhero.png') }}');">
@@ -128,7 +130,8 @@
     <div class="container mx-auto py-6">
 
         <p class="font-semibold text-xl mb-10 flex items-center"> <span
-                class="icon-[ic--sharp-diamond] text-3xl mr-2 text-red-600"></span>Mitra Property Bogor of the Month</p>
+                class="icon-[ic--sharp-diamond] text-3xl mr-2 text-red-600"></span>Mitra Property Bogor of the Month
+        </p>
 
         <div class="swiper mySwiper">
      
@@ -285,7 +288,7 @@
     </div>
 
     {{-- Footer --}}
-    @include('partials.footer')
+    @include('user.partials.footer')
 
 
 

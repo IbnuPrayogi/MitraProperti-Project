@@ -44,4 +44,44 @@ require __DIR__.'/auth.php';
 
 Route::get('/', function () {
     return view('user.home');
+
+});
+
+Route::get('/detail', function () {
+    return view('user.detail');
+});
+
+
+Route::get('/rumah', function () {
+    return view('user.rumah');
+});
+
+Route::get('/apartment', function () {
+    return view('user.apartment');
+});
+
+
+Route::get('/ruko', function () {
+    return view('user.ruko');
+});
+
+
+
+Route::get('/kavling', function () {
+    return view('user.kavling');
+});
+
+
+Route::get('/gudang', function () {
+    return view('user.gudang');
+});
+
+Route::get('/office', function () {
+    return view('user.office');
+});
+
+
+Route::get('/contact', function () {
+    return view('user.contact');
+
 });

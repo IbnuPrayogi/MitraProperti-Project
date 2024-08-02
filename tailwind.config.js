@@ -1,5 +1,3 @@
-import defaultTheme from "tailwindcss/defaultTheme";
-import forms from "@tailwindcss/forms";
 const { addDynamicIconSelectors } = require("@iconify/tailwind");
 export default {
     content: [
@@ -10,7 +8,11 @@ export default {
         "./resources/**/*.vue",
     ],
     theme: {
-        extend: {},
+        extend: {
+            fontFamily: {
+                sans: ["Plus Jakarta Sans"],
+            },
+        },
     },
     plugins: [addDynamicIconSelectors(), require("@tailwindcss/forms")],
 };

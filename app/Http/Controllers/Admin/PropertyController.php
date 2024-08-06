@@ -44,18 +44,15 @@ class PropertyController extends Controller
      */
     public function store(StorePropertyRequest $request)
     {
+        
         $data = $request->validated();
-
-       
-
-       
-        
-        
         if ($request->hasFile('picture')) {
             $data['picture'] = $request->file('picture')->getClientOriginalName();
             $request->file('picture')->storeAs('pictures', $data['picture'], 'public');
         }
 
+        
+        
         $province = Province::where('id',$data['province'])->first();
         $data['province'] = $province->name;
         $regency = Regency::where('id',$data['regency'])->first();
@@ -66,6 +63,25 @@ class PropertyController extends Controller
         $data['village'] = $village->name;
 
         $property = Property::create($data);
+
+        $nameId = $property->id;
+        $folderPath = 'public/images/' . $nameId; // Folder path based on name_id
+
+        // Check if the folder exists, if not, create it
+        if (!Storage::exists($folderPath)) {
+            Storage::makeDirectory($folderPath);
+        }
+
+       
+
+        $filePaths = [];
+        if($data['pictures']) {
+            foreach ($data['pictures'] as $file) {
+                $filename = $file->getClientOriginalName();
+                $path = $file->storeAs($folderPath, $filename); // Store file in the folder
+                $filePaths[] = $path;
+            }
+        }
 
         if($request->hasAny('area1')){
             NearestArea::create([

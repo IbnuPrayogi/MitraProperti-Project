@@ -16,7 +16,7 @@ class StorePropertyRequest extends FormRequest
         
         return [
             'name' => 'nullable|string|max:255',
-            'price' => 'nullable|numeric',
+            'price' => 'nullable|integer',
             'category' => 'nullable|string|max:255',
             'cluster_type' => 'nullable|string|max:255',
             'province' => 'nullable|string|max:255',
@@ -36,13 +36,14 @@ class StorePropertyRequest extends FormRequest
             'sports' => 'nullable|boolean',
             'child' => 'nullable|boolean',
             'pool' => 'nullable|boolean',
-            'instalment' => 'nullable|numeric',
+            'instalment' => 'nullable|integer',
             'area1'=>'nullable|string',
             'distance1'=>'nullable|numeric',
             'area2'=>'nullable|string',
             'distance2'=>'nullable|numeric',
             'area3'=>'nullable|string',
-            'distance3'=>'nullable|numeric'
+            'distance3'=>'nullable|numeric',
+            'pictures'=>'nullable'
         ];
     }
 }

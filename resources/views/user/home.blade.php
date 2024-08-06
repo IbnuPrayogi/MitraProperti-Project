@@ -142,7 +142,8 @@
                     <div class="flex space-x-10 mx-auto">
                         {{-- Items --}}
                         @foreach ($firstPart as $property)
-                            <div class="min-w-[300px] items-center shadow-md rounded-lg inline-block relative">
+                        <a href="{{ route('userproperty.show', ['userproperty' => $property->id]) }}" style="text-decoration: none;">
+                            <div href class="min-w-[300px] items-center shadow-md rounded-lg inline-block relative">
                                 <div
                                     class="absolute bg-red-600 text-white -right-3 rounded-e-full rounded-t-full h-14 px-2 top-1 z-[-1]">
                                 </div>
@@ -155,11 +156,17 @@
                                     class="rounded-t-lg mb-4 aspect-[18/13]">
 
                                 <div class="p-4 me-16">
-                                    <p class="text-red-600 text-2xl font-semibold mb-1">IDR {{ $property->price }}*</p>
+   
+                                    <p class="text-red-600 text-2xl font-semibold mb-1">IDR {{ number_format($property->price) }}*</p>
                                     <p class="text-gray-900 leading-none text-2xl font-semibold mb-4">{{ $property->name }}
                                         at
                                         {{$property->regency}}</p>
-                                    <p class="text-gray-600 mb-1 text-lg font-light me-5">Tanda DP, cicilan {{ $property->instalment }}
+                                        @php
+                                            $instalments = $property->instalment / 1000000;
+                                        @endphp
+                                    <p class="text-gray-600 mb-1 text-lg font-light me-5">Tanda DP, cicilan 
+                                    </p>
+                                    <p class="text-gray-600 mb-1 text-lg font-light me-5">{{ $instalments }}
                                         Juta/Bulan
                                     </p>
                                     <p class="text-lg text-gray-400 font-light flex items-center">
@@ -167,6 +174,7 @@
                                     </p>
                                 </div>
                             </div>
+                        </a>
                         @endforeach
                     </div>
                 </div>
@@ -187,13 +195,18 @@
                                     class="rounded-t-lg mb-4 aspect-[18/13]">
 
                                 <div class="p-4 me-16">
-                                    <p class="text-red-600 text-2xl font-semibold mb-1">IDR {{ $property->price }}*</p>
+                                    <p class="text-red-600 text-2xl font-semibold mb-1">IDR {{ number_format($property->price) }}*</p>
                                     <p class="text-gray-900 leading-none text-2xl font-semibold mb-4">{{ $property->name }}
                                         at
                                         {{$property->regency}}</p>
-                                    <p class="text-gray-600 mb-1 text-lg font-light me-5">Tanda DP, cicilan {{ $property->instalment }}
-                                        Juta/Bulan
-                                    </p>
+                                        @php
+                                        $instalments = $property->instalment / 1000000;
+                                    @endphp
+                                <p class="text-gray-600 mb-1 text-lg font-light me-5">Tanda DP, cicilan 
+                                </p>
+                                <p class="text-gray-600 mb-1 text-lg font-light me-5">{{ $instalments }}
+                                    Juta/Bulan
+                                </p>
                                     <p class="text-lg text-gray-400 font-light flex items-center">
                                         <span class="icon-[ph--map-pin-light] me-2"></span>{{ $property->regency }}, {{ $property->province }}
                                     </p>
@@ -220,13 +233,18 @@
                                     class="rounded-t-lg mb-4 aspect-[18/13]">
 
                                     <div class="p-4 me-16">
-                                        <p class="text-red-600 text-2xl font-semibold mb-1">IDR {{ $property->price }}*</p>
+                                        <p class="text-red-600 text-2xl font-semibold mb-1">IDR {{ number_format($property->price) }}*</p>
                                         <p class="text-gray-900 leading-none text-2xl font-semibold mb-4">{{ $property->name }}
                                             at
                                             {{$property->regency}}</p>
-                                        <p class="text-gray-600 mb-1 text-lg font-light me-5">Tanda DP, cicilan {{ $property->instalment }}
-                                            Juta/Bulan
-                                        </p>
+                                            @php
+                                            $instalments = $property->instalment / 1000000;
+                                        @endphp
+                                    <p class="text-gray-600 mb-1 text-lg font-light me-5">Tanda DP, cicilan 
+                                    </p>
+                                    <p class="text-gray-600 mb-1 text-lg font-light me-5">{{ $instalments }}
+                                        Juta/Bulan
+                                    </p>
                                         <p class="text-lg text-gray-400 font-light flex items-center">
                                             <span class="icon-[ph--map-pin-light] me-2"></span>{{ $property->regency }}, {{ $property->province }}
                                         </p>
@@ -269,10 +287,13 @@
                     <img src="{{ asset('images/dummy_property.png') }}" class="rounded-t-lg mb-4 aspect-[18/13]">
         
                     <div class="p-4 me-16">
-                        <p class="text-red-600 text-2xl font-semibold mb-1">IDR {{ $property->price }}*</p>
+                        <p class="text-red-600 text-2xl font-semibold mb-1">IDR {{ number_format($property->price) }}*</p>
                         <p class="text-gray-900 leading-none text-2xl font-semibold mb-4">{{ $property->name }} at
                             {{$property->regency}}</p>
-                        <p class="text-gray-600 mb-1 text-lg font-light me-5">Tanda DP, cicilan {{ $property->instalment }}
+                            @php
+                                            $instalment = $property->instalment / 1000000;
+                                        @endphp
+                        <p class="text-gray-600 mb-1 text-lg font-light me-5">Tanda DP, cicilan {{ $instalment }}
                             Juta/Bulan
                         </p>
                         <p class="text-lg text-gray-400 font-light flex items-center">

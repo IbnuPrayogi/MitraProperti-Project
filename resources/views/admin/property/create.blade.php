@@ -61,8 +61,6 @@
                                 </div>
                             </div>
                                 
-                            
-                            
 
                             <!-- Category Field -->
                             <div class="form-group">
@@ -269,14 +267,9 @@
                                 </div>
                             </div>
                        
-                            
-
                             <!-- Instalment Field -->
-                            
-
-                            <!-- Picture Field -->
                             <div class="form-group">
-                                <label for="picture">Picture</label>
+                                <label for="picture">Property Profile</label>
                                 <div class="input-group">
                                     <div class="custom-file">
                                         <input type="file" class="custom-file-input" id="picture" name="picture">
@@ -287,6 +280,20 @@
                                     </div>
                                 </div>
                             </div>
+                            
+                            
+                            <!-- Picture Field -->
+                            <div class="form-group">
+                                <label for="pictures">Upload Gambar (maksimal 6 gambar)</label>
+                                <div class="input-group">
+                                    <div class="custom-file">
+                                        <input type="file" class="custom-file-input" id="pictures" name="pictures[]" multiple>
+                                        <label class="custom-file-label" for="pictures">Pilih file</label>
+                                    </div>
+                                </div>
+                                <small class="form-text text-muted">Maksimal 6 gambar dapat diupload.</small>
+                            </div>
+                            
 
                             <!-- Terms and Conditions -->
                             <div class="form-check">
@@ -324,8 +331,28 @@ $(document).ready(function () {
 
 @section('additional-scripts')
 <script type="text/javascript">
+document.addEventListener('DOMContentLoaded', function() {
+    document.querySelector('#pictures').addEventListener('change', function(e) {
+        let files = e.target.files;
+        let fileNames = [];
+        
+        if (files.length > 6) {
+            alert('Maksimal 6 gambar yang dapat diupload.');
+            e.target.value = ''; // Reset input jika lebih dari 6 file
+            return;
+        }
+
+        for (let i = 0; i < files.length; i++) {
+            fileNames.push(files[i].name);
+        }
+
+        e.target.nextElementSibling.innerText = fileNames.join(', ');
+    });
+});
+
     $(document).ready(function () {
         $('#provincies').on('change', function () {
+            console.log("test");
             var provinceId = this.value;
             $('#regencies').html('<option value="">Select Kabupaten</option>');
             $('#districts').html('<option value="">Select Kecamatan</option>');
@@ -343,6 +370,7 @@ $(document).ready(function () {
                 });
             }
         });
+        
 
         $('#regencies').on('change', function () {
             var regencyId = this.value;
@@ -379,5 +407,18 @@ $(document).ready(function () {
             }
         });
     });
+
+    document.getElementById('picture').addEventListener('change', function (event) {
+        var input = event.target;
+        var label = input.nextElementSibling;
+
+        if (input.files.length > 0) {
+            var fileName = Array.from(input.files).map(file => file.name).join(', ');
+            label.textContent = fileName;
+        } else {
+            label.textContent = 'Choose file';
+        }
+    });
+
 </script>
 @endsection

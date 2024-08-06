@@ -1,11 +1,12 @@
 <?php
 
-use App\Http\Controllers\Admin\BlogController;
-use App\Http\Controllers\Admin\ProfileController;
-use App\Http\Controllers\Admin\PropertyController;
 use App\Models\Property;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Admin\BlogController;
+use App\Http\Controllers\UserPropertyController;
+use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\Admin\LocationController;
+use App\Http\Controllers\Admin\PropertyController;
 use App\Http\Controllers\User\UserDashboardController;
 
 Route::get('/', function () {
@@ -25,10 +26,34 @@ Route::middleware('auth')->group(function () {
     Route::get('/getRegencies/{provinceId}', [LocationController::class, 'getRegencies']);
     Route::get('/getDistricts/{regencyId}', [LocationController::class, 'getDistricts']);
     Route::get('/getVillages/{districtId}', [LocationController::class, 'getVillages']);
+    Route::get('/getRegenciesByCategory/{category}', [UserPropertyController::class,'getRegenciesByCategory']);
+    Route::get('/properties/{type}', [UserPropertyController::class, 'searchProperties']);
 });
 
 
 Route::resource('userdashboard',UserDashboardController::class);
+Route::resource('userproperty',UserPropertyController::class);
+Route::get('/properti/rumah', [UserPropertyController::class, 'fetchRumah'])->name('userproperty.fetchrumah');
+Route::get('/properti/apartment', [UserPropertyController::class, 'fetchApartment'])->name('userproperty.fetchapartment');
+Route::get('/properti/kavling', [UserPropertyController::class, 'fetchKavling'])->name('userproperty.fetchkavling');
+Route::get('/properti/gudang', [UserPropertyController::class, 'fetchGudang'])->name('userproperty.fetchgudang');
+Route::get('/properti/office', [UserPropertyController::class, 'fetchOffice'])->name('userproperty.fetchoffice');
+Route::get('/properti/ruko', [UserPropertyController::class, 'fetchRuko'])->name('userproperty.fetchruko');
+// web.php (or api.php depending on your routing structure)
+// Route::get('/propertis/{propertyType}', [UserPropertyController::class, 'fetchRegencies']);
+// routes/web.php
+// routes/web.php
+
+
+// PropertyController.php
+
+
+
+// YourController.php
+
+
+
+
 
 
 

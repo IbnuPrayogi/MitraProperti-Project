@@ -13,8 +13,8 @@ class PropertySeeder extends Seeder
             // First pair with same province and district
             [
                 'name' => 'Property 1',
-                'price' => 1000000.00,
-                'category' => 'Residential',
+                'price' => 1000000,
+                'category' => 'home',
                 'cluster_type' => 'Cluster A',
                 'province' => 'Lampung',
                 'regency' => 'Lampung Tengah',
@@ -33,15 +33,15 @@ class PropertySeeder extends Seeder
                 'sports' => false,
                 'child' => false,
                 'pool' => true,
-                'instalment' => 10000.00,
+                'instalment' => 10000,
                 'picture' => null,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
             [
                 'name' => 'Property 2',
-                'price' => 1530000.00,
-                'category' => 'Commercial',
+                'price' => 1530000,
+                'category' => 'home',
                 'cluster_type' => 'Cluster A',
                 'province' => 'Lampung',
                 'regency' => 'Lampung Tengah',
@@ -60,7 +60,7 @@ class PropertySeeder extends Seeder
                 'sports' => true,
                 'child' => true,
                 'pool' => false,
-                'instalment' => 15000.00,
+                'instalment' => 15000,
                 'picture' => null,
                 'created_at' => now(),
                 'updated_at' => now()
@@ -68,8 +68,8 @@ class PropertySeeder extends Seeder
             // Second pair with same province and district
             [
                 'name' => 'Property 3',
-                'price' => 2000000.00,
-                'category' => 'Residential',
+                'price' => 2000000,
+                'category' => 'apartment',
                 'cluster_type' => 'Cluster B',
                 'province' => 'Jawa Tengah',
                 'regency' => 'Semarang',
@@ -88,15 +88,15 @@ class PropertySeeder extends Seeder
                 'sports' => false,
                 'child' => true,
                 'pool' => false,
-                'instalment' => 20000.00,
+                'instalment' => 20000,
                 'picture' => null,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
             [
                 'name' => 'Property 4',
-                'price' => 2500000.00,
-                'category' => 'Commercial',
+                'price' => 2500000,
+                'category' => 'apartment',
                 'cluster_type' => 'Cluster B',
                 'province' => 'Lampung Selatan',
                 'regency' => 'Way Huwi',
@@ -115,7 +115,7 @@ class PropertySeeder extends Seeder
                 'sports' => true,
                 'child' => false,
                 'pool' => true,
-                'instalment' => 25000.00,
+                'instalment' => 25000,
                 'picture' => null,
                 'created_at' => now(),
                 'updated_at' => now()
@@ -123,8 +123,8 @@ class PropertySeeder extends Seeder
             // Third pair with same province and district
             [
                 'name' => 'Property 5',
-                'price' => 300000.00,
-                'category' => 'Residential',
+                'price' => 300000,
+                'category' => 'kavling',
                 'cluster_type' => 'Cluster C',
                 'province' => 'Lampung Selatan',
                 'regency' => 'Way Huwi',
@@ -143,15 +143,15 @@ class PropertySeeder extends Seeder
                 'sports' => false,
                 'child' => true,
                 'pool' => false,
-                'instalment' => 30000.00,
+                'instalment' => 30000,
                 'picture' => null,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
             [
                 'name' => 'Property 6',
-                'price' => 350000.00,
-                'category' => 'Commercial',
+                'price' => 350000,
+                'category' => 'kavling',
                 'cluster_type' => 'Cluster C',
                 'province' => 'Jawa Tengah',
                 'regency' => 'Semarang',
@@ -170,7 +170,7 @@ class PropertySeeder extends Seeder
                 'sports' => true,
                 'child' => false,
                 'pool' => true,
-                'instalment' => 35000.00,
+                'instalment' => 35000,
                 'picture' => null,
                 'created_at' => now(),
                 'updated_at' => now()
@@ -178,8 +178,8 @@ class PropertySeeder extends Seeder
             // Fourth pair with same province and district
             [
                 'name' => 'Property 7',
-                'price' => 4000000.00,
-                'category' => 'Residential',
+                'price' => 4000000,
+                'category' => 'gudang',
                 'cluster_type' => 'Cluster D',
                 'province' => 'Jawa Barat',
                 'regency' => 'Bandung',
@@ -198,15 +198,15 @@ class PropertySeeder extends Seeder
                 'sports' => true,
                 'child' => true,
                 'pool' => false,
-                'instalment' => 40000.00,
+                'instalment' => 40000,
                 'picture' => null,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
             [
                 'name' => 'Property 8',
-                'price' => 4500000.00,
-                'category' => 'Commercial',
+                'price' => 4500000,
+                'category' => 'gudang',
                 'cluster_type' => 'Cluster D',
                 'province' => 'Jawa Barat',
                 'regency' => 'Bandung',
@@ -225,7 +225,7 @@ class PropertySeeder extends Seeder
                 'sports' => false,
                 'child' => false,
                 'pool' => true,
-                'instalment' => 45000.00,
+                'instalment' => 45000,
                 'picture' => null,
                 'created_at' => now(),
                 'updated_at' => now()
@@ -233,8 +233,8 @@ class PropertySeeder extends Seeder
             // Fifth pair with same province and district
             [
                 'name' => 'Property 9',
-                'price' => 5000000.00,
-                'category' => 'Residential',
+                'price' => 5000000,
+                'category' => 'office',
                 'cluster_type' => 'Cluster E',
                 'province' => 'Jawa Timur',
                 'regency' => 'Surabaya',
@@ -253,15 +253,15 @@ class PropertySeeder extends Seeder
                 'sports' => true,
                 'child' => false,
                 'pool' => false,
-                'instalment' => 50000.00,
+                'instalment' => 50000,
                 'picture' => null,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
             [
                 'name' => 'Property 10',
-                'price' => 5500000.00,
-                'category' => 'Commercial',
+                'price' => 5500000,
+                'category' => 'office',
                 'cluster_type' => 'Cluster E',
                 'province' => 'Jawa Timur',
                 'regency' => 'Surabaya',
@@ -280,7 +280,7 @@ class PropertySeeder extends Seeder
                 'sports' => false,
                 'child' => true,
                 'pool' => true,
-                'instalment' => 55000.00,
+                'instalment' => 55000,
                 'picture' => null,
                 'created_at' => now(),
                 'updated_at' => now()
@@ -288,8 +288,8 @@ class PropertySeeder extends Seeder
             // Sixth pair with same province and district
             [
                 'name' => 'Property 11',
-                'price' => 600000.00,
-                'category' => 'Residential',
+                'price' => 600000,
+                'category' => 'ruko',
                 'cluster_type' => 'Cluster F',
                 'province' => 'DKI Jakarta',
                 'regency' => 'Jakarta Selatan',
@@ -308,15 +308,15 @@ class PropertySeeder extends Seeder
                 'sports' => true,
                 'child' => false,
                 'pool' => false,
-                'instalment' => 60000.00,
+                'instalment' => 60000,
                 'picture' => null,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
             [
                 'name' => 'Property 12',
-                'price' => 650000.00,
-                'category' => 'Commercial',
+                'price' => 650000,
+                'category' => 'ruko',
                 'cluster_type' => 'Cluster F',
                 'province' => 'DKI Jakarta',
                 'regency' => 'Jakarta Selatan',
@@ -335,7 +335,7 @@ class PropertySeeder extends Seeder
                 'sports' => false,
                 'child' => true,
                 'pool' => true,
-                'instalment' => 65000.00,
+                'instalment' => 65000,
                 'picture' => null,
                 'created_at' => now(),
                 'updated_at' => now()

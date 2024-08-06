@@ -33,13 +33,12 @@ class UserDashboardController extends Controller
             ->orderBy('price', 'asc')
             ->get();
 
+
             $newestProperties = Property::latest()->take(12)->get();
-        
             $firstPart = $newestProperties->slice(0, 4);
             $secondPart = $newestProperties->slice(4, 4);
             $thirdPart = $newestProperties->slice(8, 4);
-
-            $regencies = Property::distinct()->pluck('regency');
+            $regencies = Property::distinct()->pluck('regency')->take(6);
             $bottomproperties = Property::all();
 
             

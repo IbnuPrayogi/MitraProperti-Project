@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('properties', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->decimal('price', 15, 2); 
+            $table->integer('price'); 
             $table->string('category');
             $table->string('cluster_type');
             $table->string('province');
@@ -34,7 +34,7 @@ return new class extends Migration
             $table->boolean('sports');
             $table->boolean('child');
             $table->boolean('pool');
-            $table->decimal('instalment', 15, 2); 
+            $table->integer('instalment'); 
             $table->string('picture')->nullable(); 
             $table->timestamps();
         });

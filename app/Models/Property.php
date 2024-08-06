@@ -25,8 +25,8 @@ class Property extends Model
         'sports' => 'boolean',
         'child' => 'boolean',
         'pool' => 'boolean',
-        'price' => 'decimal:2',
-        'instalment' => 'decimal:2',
+        'price' => 'integer',
+        'instalment' => 'integer',
     ];
 
 

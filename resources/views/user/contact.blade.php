@@ -98,7 +98,7 @@
 
     {{-- Initialize Swiper --}}
     <script>
-        var swiper = new Swiper(".mySwiper", {
+        var swiper = new Swipercc(".mySwiper", {
             slidesPerView: 1,
             spaceBetween: 30,
             freeMode: false,

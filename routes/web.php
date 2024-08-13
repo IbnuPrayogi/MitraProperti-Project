@@ -81,3 +81,12 @@ Route::get('/contact', function () {
 Route::get('/about', function () {
     return view('user.about-us');
 });
+
+
+Route::get('/blog', function() {
+    return view('user.blog');
+});
+
+Route::get('/blog-detail', function() {
+    return view('user.blog-detail');
+});

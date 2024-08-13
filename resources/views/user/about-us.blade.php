@@ -58,7 +58,6 @@
                 </p>
             </div>
 
-
         </div>
 
         <div class="col-span-1 h-10 bg-red-400 col-end-6">

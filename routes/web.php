@@ -110,3 +110,17 @@ Route::get('/contact', function () {
     return view('user.contact');
 
 });
+
+
+Route::get('/about', function () {
+    return view('user.about-us');
+});
+
+
+Route::get('/blog', function() {
+    return view('user.blog');
+});
+
+Route::get('/blog-detail', function() {
+    return view('user.blog-detail');
+});

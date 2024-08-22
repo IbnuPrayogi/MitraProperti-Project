@@ -173,12 +173,11 @@
                 </li>
 
                 <li class="hoverable">
-                    <a href="#" class="relative flex py-6 px-4 lg:p-6 text-sm lg:text-base font-light ">About
-                        Us</a>
+                    <a href="/about" class="relative flex py-6 px-4 lg:p-6 text-sm lg:text-base font-light ">About Us</a>
                 </li>
 
                 <li class="hoverable">
-                    <a href="#" class="relative flex py-6 px-4 lg:p-6 text-sm lg:text-base font-light ">Blog</a>
+                    <a href="/blog" class="relative flex py-6 px-4 lg:p-6 text-sm lg:text-base font-light ">Blog</a>
                 </li>
 
 

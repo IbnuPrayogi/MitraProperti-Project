@@ -20,6 +20,7 @@
 <body class="bg-white">
     {{-- Navbar --}}
     @include('user.partials.navbar')
+    
 
     {{-- Hero Image --}}
     <div class="bg-center bg-cover" style="background-image: url('{{ asset('images/backgroundhero.png') }}');">
@@ -109,7 +110,19 @@
             {{-- Items --}}
             @foreach ($topproperties as $topproperty)
                 <div class="flex items-center p-[1.81rem] shadow-md rounded-lg bg-[#f2f2f2]">
-                    <img src="{{ asset('images/dummy_city.png') }}" class="w-28 rounded-full aspect-square">
+                    @php
+                        $imagePath = !empty($topproperty->picture) ? 'images/' . $topproperty->picture : null;
+                        $defaultImagePath = 'images/dummy_property.png';
+
+                        if ($imagePath && file_exists(public_path($imagePath))) {
+                            $imageUrl = asset($imagePath);
+                        } else {
+                            $imageUrl = asset($defaultImagePath);
+                        }
+                    @endphp
+
+                    
+                    <img src="{{ asset($imageUrl) }}" class="w-28 rounded-full aspect-square">
                     <div class="text-sm ms-[2rem]">
                         <p class="text-gray-900 leading-none text-lg font-semibold mb-2">{{ $topproperty->name }}</p>
                         <p class="text-gray-600">Start Cicilan</p>
@@ -152,7 +165,17 @@
                                     <span class="icon-[solar--medal-ribbons-star-line-duotone] mr-2 text-lg"></span>New
                                     Launching
                                 </div>
-                                <img src="{{ asset('images/dummy_property.png') }}"
+                                @php
+                                    $imagePath = !empty($property->picture) ? 'images/' . $property->picture : null;
+                                    $defaultImagePath = 'images/dummy_property.png';
+
+                                    if ($imagePath && file_exists(public_path($imagePath))) {
+                                        $imageUrl = asset($imagePath);
+                                    } else {
+                                        $imageUrl = asset($defaultImagePath);
+                                    }
+                                @endphp
+                                <img src="{{ asset($imageUrl) }}"
                                     class="rounded-t-lg mb-4 aspect-[18/13]">
 
                                 <div class="p-4 me-16">
@@ -182,36 +205,48 @@
                     <div class="flex space-x-10 container mx-auto">
                         {{-- Items --}}
                         @foreach ($secondPart as $property)
-                            <div class="min-w-[300px] items-center shadow-md rounded-lg inline-block relative">
-                                <div
-                                    class="absolute bg-red-600 text-white -right-3 rounded-e-full rounded-t-full h-14 px-2 top-1 z-[-1]">
-                                </div>
-                                <div
-                                    class="absolute bg-red-600 text-white right-0 px-4 py-2 rounded-s-md top-5 shadow-md flex items-center">
-                                    <span class="icon-[solar--medal-ribbons-star-line-duotone] mr-2 text-lg"></span>New
-                                    Launching
-                                </div>
-                                <img src="{{ asset('images/dummy_property.png') }}"
-                                    class="rounded-t-lg mb-4 aspect-[18/13]">
+                            <a href="{{ route('userproperty.show', ['userproperty' => $property->id]) }}" style="text-decoration: none;">
+                                <div class="min-w-[300px] items-center shadow-md rounded-lg inline-block relative">
+                                    <div
+                                        class="absolute bg-red-600 text-white -right-3 rounded-e-full rounded-t-full h-14 px-2 top-1 z-[-1]">
+                                    </div>
+                                    <div
+                                        class="absolute bg-red-600 text-white right-0 px-4 py-2 rounded-s-md top-5 shadow-md flex items-center">
+                                        <span class="icon-[solar--medal-ribbons-star-line-duotone] mr-2 text-lg"></span>New
+                                        Launching
+                                    </div>
+                                    @php
+                                        $imagePath = !empty($property->picture) ? 'images/' . $property->picture : null;
+                                        $defaultImagePath = 'images/dummy_property.png';
 
-                                <div class="p-4 me-16">
-                                    <p class="text-red-600 text-2xl font-semibold mb-1">IDR {{ number_format($property->price) }}*</p>
-                                    <p class="text-gray-900 leading-none text-2xl font-semibold mb-4">{{ $property->name }}
-                                        at
-                                        {{$property->regency}}</p>
-                                        @php
-                                        $instalments = $property->instalment / 1000000;
+                                        if ($imagePath && file_exists(public_path($imagePath))) {
+                                            $imageUrl = asset($imagePath);
+                                        } else {
+                                            $imageUrl = asset($defaultImagePath);
+                                        }
                                     @endphp
-                                <p class="text-gray-600 mb-1 text-lg font-light me-5">Tanda DP, cicilan 
-                                </p>
-                                <p class="text-gray-600 mb-1 text-lg font-light me-5">{{ $instalments }}
-                                    Juta/Bulan
-                                </p>
-                                    <p class="text-lg text-gray-400 font-light flex items-center">
-                                        <span class="icon-[ph--map-pin-light] me-2"></span>{{ $property->regency }}, {{ $property->province }}
+                                    <img src="{{ asset($imageUrl) }}"
+                                        class="rounded-t-lg mb-4 aspect-[18/13]">
+
+                                    <div class="p-4 me-16">
+                                        <p class="text-red-600 text-2xl font-semibold mb-1">IDR {{ number_format($property->price) }}*</p>
+                                        <p class="text-gray-900 leading-none text-2xl font-semibold mb-4">{{ $property->name }}
+                                            at
+                                            {{$property->regency}}</p>
+                                            @php
+                                            $instalments = $property->instalment / 1000000;
+                                        @endphp
+                                    <p class="text-gray-600 mb-1 text-lg font-light me-5">Tanda DP, cicilan 
                                     </p>
+                                    <p class="text-gray-600 mb-1 text-lg font-light me-5">{{ $instalments }}
+                                        Juta/Bulan
+                                    </p>
+                                        <p class="text-lg text-gray-400 font-light flex items-center">
+                                            <span class="icon-[ph--map-pin-light] me-2"></span>{{ $property->regency }}, {{ $property->province }}
+                                        </p>
+                                    </div>
                                 </div>
-                            </div>
+                            </a>
                         @endforeach
                     </div>
                 </div>
@@ -220,6 +255,7 @@
                     <div class="flex space-x-10 container mx-auto">
                         {{-- Items --}}
                         @foreach ($thirdPart as $property)
+                        <a href="{{ route('userproperty.show', ['userproperty' => $property->id]) }}" style="text-decoration: none;">
                             <div class="min-w-[300px] items-center shadow-md rounded-lg inline-block relative">
                                 <div
                                     class="absolute bg-red-600 text-white -right-3 rounded-e-full rounded-t-full h-14 px-2 top-1 z-[-1]">
@@ -229,7 +265,17 @@
                                     <span class="icon-[solar--medal-ribbons-star-line-duotone] mr-2 text-lg"></span>New
                                     Launching
                                 </div>
-                                <img src="{{ asset('images/dummy_property.png') }}"
+                                @php
+                                    $imagePath = !empty($property->picture) ? 'images/' . $property->picture : null;
+                                    $defaultImagePath = 'images/dummy_property.png';
+
+                                    if ($imagePath && file_exists(public_path($imagePath))) {
+                                        $imageUrl = asset($imagePath);
+                                    } else {
+                                        $imageUrl = asset($defaultImagePath);
+                                    }
+                                @endphp
+                                <img src="{{ asset($imageUrl) }}"
                                     class="rounded-t-lg mb-4 aspect-[18/13]">
 
                                     <div class="p-4 me-16">
@@ -250,6 +296,7 @@
                                         </p>
                                     </div>
                             </div>
+                        </a>
                         @endforeach
                     </div>
                 </div>
@@ -281,10 +328,21 @@
         <div class="grid grid-cols-4 gap-10 container mx-auto" id="property-grid">
             {{-- Items --}}
             @foreach ($bottomproperties as $property)
+            <a href="{{ route('userproperty.show', ['userproperty' => $property->id]) }}" style="text-decoration: none;">
                 <div class="min-w-[300px] items-center shadow-md rounded-lg inline-block relative property-card"
                      data-regency="{{ $property->regency }}">
+                     @php
+                                    $imagePath = !empty($property->picture) ? 'images/' . $property->picture : null;
+                                    $defaultImagePath = 'images/dummy_property.png';
+
+                                    if ($imagePath && file_exists(public_path($imagePath))) {
+                                        $imageUrl = asset($imagePath);
+                                    } else {
+                                        $imageUrl = asset($defaultImagePath);
+                                    }
+                                @endphp
         
-                    <img src="{{ asset('images/dummy_property.png') }}" class="rounded-t-lg mb-4 aspect-[18/13]">
+                    <img src="{{ asset($imageUrl) }}" class="rounded-t-lg mb-4 aspect-[18/13]">
         
                     <div class="p-4 me-16">
                         <p class="text-red-600 text-2xl font-semibold mb-1">IDR {{ number_format($property->price) }}*</p>
@@ -301,6 +359,7 @@
                         </p>
                     </div>
                 </div>
+            </a>
             @endforeach
         </div>
         

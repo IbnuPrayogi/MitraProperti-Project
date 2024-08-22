@@ -17,7 +17,7 @@
     <div class="bg-[#F7F7F7] pt-24 pb-12">
         {{-- Path --}}
         <div class="container flex items-center space-x-2 mx-auto bg-[#F4BDB9] p-4 rounded-lg text-gray-600">
-            @foreach ([['name' => 'Home', 'url' => '/'], ['name' => 'Rumah', 'url' => '/about'], ['name' => 'Bogor', 'url' => '/contact'], ['name' => 'Spring Residence at Sentul City', 'url' => '/contact']] as $link)
+            @foreach ([['name' => 'Home', 'url' => '/'], ['name' => $property->category, 'url' => '/about'], ['name' => $property->regency, 'url' => '/contact'], ['name' => $property->name, 'url' => '/contact']] as $link)
                 @if ($loop->last)
                     <span>{{ $link['name'] }}</span>
                 @else
@@ -135,7 +135,7 @@
                 <p class="font-semibold text-xl pt-2">Fasilitas Umum</p>
                 <div class="grid grid-cols-2">
                     @if ($property->jogging)
-                    <p class="flex items-center"><span class="icon-[fluent--run-16-filled] me-2"></span>
+                    <p class="flex items-center"><span class="icon-[fluent--run-16-filled] me-2"></span>Jogging Track
                     </p>
                     @endif
                     @if ($property->sports)

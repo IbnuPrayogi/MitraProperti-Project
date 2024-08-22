@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\Admin\LocationController;
 use App\Http\Controllers\Admin\PropertyController;
 use App\Http\Controllers\User\UserDashboardController;
+use App\Http\Controllers\UserBlogController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -39,6 +40,10 @@ Route::get('/properti/kavling', [UserPropertyController::class, 'fetchKavling'])
 Route::get('/properti/gudang', [UserPropertyController::class, 'fetchGudang'])->name('userproperty.fetchgudang');
 Route::get('/properti/office', [UserPropertyController::class, 'fetchOffice'])->name('userproperty.fetchoffice');
 Route::get('/properti/ruko', [UserPropertyController::class, 'fetchRuko'])->name('userproperty.fetchruko');
+
+
+
+Route::resource('userblog',UserBlogController::class);
 // web.php (or api.php depending on your routing structure)
 // Route::get('/propertis/{propertyType}', [UserPropertyController::class, 'fetchRegencies']);
 // routes/web.php
@@ -117,7 +122,7 @@ Route::get('/about', function () {
 });
 
 
-Route::get('/blog', function() {
+Route::get('/blogs', function() {
     return view('user.blog');
 });
 

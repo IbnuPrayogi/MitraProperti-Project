@@ -15,7 +15,7 @@ class UserBlogController extends Controller
         $headline = Blog::where('category','news')->first();
         $news = Blog::where('category','news')->get()->take(3);
         $panduan = Blog::where('category','panduan')->get();
-        $lifestyle = Blog::where('category','lifestyle')->get();
+        $lifestyle = Blog::where('category','lifestyle')->get()->take(3);
         $tips = Blog::where('category','tips')->get();
         $design = Blog::where('category','design')->get();
 
@@ -42,9 +42,11 @@ class UserBlogController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Blog $blog)
+    public function show($id)
     {
-        //
+        $blog = Blog::where('id',$id)->get()->first();
+        
+        return view('user.blog-detail',compact('blog'));
     }
 
     /**

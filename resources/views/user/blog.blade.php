@@ -42,32 +42,21 @@
                     ternyata tetap tinggi pada masa pilpres hingga sekarang ini.</p>
             </div>
 
+            
+
             <div class="divide-y space-y-8">
+                @foreach ($news as $newsitem)
+                
+            
                 <div class="grid grid-cols-5 gap-6">
                     <img src="{{ asset('images/blog_thumbnail.png') }}" class="rounded-lg col-span-2" alt="">
                     <div class="col-span-3">
                         <p class="mt-2 text-[#A2A2A2]">Mar 24, 2024</p>
-                        <p class="mt-2 font-semibold text-xl me-[7rem]">Cara WNA Beli Properti di Indonesia dan
-                            Persyaratannya</p>
+                        <p class="mt-2 font-semibold text-xl me-[7rem]">{{ $newsitem->title }}</p>
                     </div>
                 </div>
-                <div class="grid grid-cols-5 gap-6 pt-8">
-                    <img src="{{ asset('images/blog_thumbnail.png') }}" class="rounded-lg col-span-2" alt="">
-                    <div class="col-span-3">
-                        <p class="mt-2 text-[#A2A2A2]">Mar 24, 2024</p>
-                        <p class="mt-2 font-semibold text-xl me-[7rem]">Cara WNA Beli Properti di Indonesia dan
-                            Persyaratannya</p>
-                    </div>
-                </div>
-
-                <div class="grid grid-cols-5 gap-6 pt-8">
-                    <img src="{{ asset('images/blog_thumbnail.png') }}" class="rounded-lg col-span-2" alt="">
-                    <div class="col-span-3">
-                        <p class="mt-2 text-[#A2A2A2]">Mar 24, 2024</p>
-                        <p class="mt-2 font-semibold text-xl me-[7rem]">Waspada Modus Penipuan Jual Beli Properti di
-                            Malang, Korban Merugi Ratusan Juta</p>
-                    </div>
-                </div>
+                @endforeach
+             
             </div>
 
 
@@ -85,17 +74,14 @@
         </div>
 
         <div class="grid grid-cols-4 gap-12 mt-8">
-            @for ($i = 0; $i < 4; $i++)
+            @foreach ($panduan as $panduanitem)
                 <div class="">
                     <img src="{{ asset('images/blog_thumbnail.png') }}" class=" rounded-lg" alt="">
                     <p class="mt-2 text-[#A2A2A2]">Mar 24, 2024</p>
-                    <p class="mt-2 font-semibold text-2xl ">Penjualan Properti Menggeliat Lagi, Rumah di Bawah Rp
-                        500 Juta Paling Dicari</p>
-                    <p class="mt-2  ">Pasar properti hunian menunjukkan tren positif di kuartal pertama tahun 2024
-                        dengan permintaan yang masih terus meningkat. Minat masyarakat untuk memperoleh tempat tinggal
-                        ternyata tetap tinggi pada masa pilpres hingga sekarang ini.</p>
+                    <p class="mt-2 font-semibold text-2xl ">{{ $panduanitem->title }}</p>
+                    <p class="mt-2  ">{{ $panduanitem->content }}</p>
                 </div>
-            @endfor
+            @endforeach
 
 
         </div>
@@ -134,17 +120,14 @@
         </div>
 
         <div class="grid grid-cols-3 gap-12 mt-8">
-            @for ($i = 0; $i < 6; $i++)
+            @foreach ($tips as $tipsitem)
                 <div class="">
                     <img src="{{ asset('images/blog_thumbnail.png') }}" class=" rounded-lg" alt="">
                     <p class="mt-2 text-[#A2A2A2]">Mar 24, 2024</p>
-                    <p class="mt-2 font-semibold text-2xl ">Penjualan Properti Menggeliat Lagi, Rumah di Bawah Rp
-                        500 Juta Paling Dicari</p>
-                    <p class="mt-2  ">Pasar properti hunian menunjukkan tren positif di kuartal pertama tahun 2024
-                        dengan permintaan yang masih terus meningkat. Minat masyarakat untuk memperoleh tempat tinggal
-                        ternyata tetap tinggi pada masa pilpres hingga sekarang ini.</p>
+                    <p class="mt-2 font-semibold text-2xl ">{{ $tipsitem->title }}</p>
+                    <p class="mt-2  ">{{ $tipsitem->content }}</p>
                 </div>
-            @endfor
+            @endforeach
         </div>
     </div>
 
@@ -153,37 +136,14 @@
     <div class="container mx-auto mt-28 bg-black p-[3rem] rounded-xl">
         <p class="flex items-center text-xl font-semibold text-[#EE3729]">Lifestyle</p>
         <div class="flex mt-10 divide-x divide-gray-500 gap-12">
+            @foreach ($lifestyle as $lifestyleitem)
+                
+            @endforeach
             <div class="">
                 <img src="{{ asset('images/blog_thumbnail.png') }}" class=" rounded-lg" alt="">
                 <p class="mt-2 text-[#A2A2A2]">Mar 24, 2024</p>
-                <p class="mt-2 font-semibold text-2xl text-white">Penjualan Properti Menggeliat Lagi, Rumah di Bawah Rp
-                    500 Juta Paling Dicari</p>
-                <p class="mt-2  text-[#A2A2A2]">Pasar properti hunian menunjukkan tren positif di kuartal pertama tahun
-                    2024
-                    dengan permintaan yang masih terus meningkat. Minat masyarakat untuk memperoleh tempat tinggal
-                    ternyata tetap tinggi pada masa pilpres hingga sekarang ini.</p>
-            </div>
-
-            <div class="ps-12">
-                <img src="{{ asset('images/blog_thumbnail.png') }}" class=" rounded-lg" alt="">
-                <p class="mt-2 text-[#A2A2A2]">Mar 24, 2024</p>
-                <p class="mt-2 font-semibold text-2xl text-white">Penjualan Properti Menggeliat Lagi, Rumah di Bawah Rp
-                    500 Juta Paling Dicari</p>
-                <p class="mt-2  text-[#A2A2A2]">Pasar properti hunian menunjukkan tren positif di kuartal pertama tahun
-                    2024
-                    dengan permintaan yang masih terus meningkat. Minat masyarakat untuk memperoleh tempat tinggal
-                    ternyata tetap tinggi pada masa pilpres hingga sekarang ini.</p>
-            </div>
-
-            <div class="ps-12">
-                <img src="{{ asset('images/blog_thumbnail.png') }}" class=" rounded-lg" alt="">
-                <p class="mt-2 text-[#A2A2A2]">Mar 24, 2024</p>
-                <p class="mt-2 font-semibold text-2xl text-white">Penjualan Properti Menggeliat Lagi, Rumah di Bawah Rp
-                    500 Juta Paling Dicari</p>
-                <p class="mt-2  text-[#A2A2A2]">Pasar properti hunian menunjukkan tren positif di kuartal pertama tahun
-                    2024
-                    dengan permintaan yang masih terus meningkat. Minat masyarakat untuk memperoleh tempat tinggal
-                    ternyata tetap tinggi pada masa pilpres hingga sekarang ini.</p>
+                <p class="mt-2 font-semibold text-2xl text-white">{{$lifestyleitem->title}}</p>
+                <p class="mt-2  text-[#A2A2A2]">P{{$lifestyleitem->content}}</p>
             </div>
 
         </div>
@@ -201,15 +161,7 @@
 
         <div class="grid grid-cols-2 gap-24 mt-8">
             <div class="divide-y space-y-8">
-                <div class="grid grid-cols-5 gap-6">
-                    <img src="{{ asset('images/blog_thumbnail.png') }}" class="rounded-lg col-span-2"
-                        alt="">
-                    <div class="col-span-3">
-                        <p class="mt-2 text-[#A2A2A2]">Mar 24, 2024</p>
-                        <p class="mt-2 font-semibold text-xl me-[7rem]">Cara WNA Beli Properti di Indonesia dan
-                            Persyaratannya</p>
-                    </div>
-                </div>
+             
                 <div class="grid grid-cols-5 gap-6 pt-8">
                     <img src="{{ asset('images/blog_thumbnail.png') }}" class="rounded-lg col-span-2"
                         alt="">

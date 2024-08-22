@@ -20,6 +20,17 @@
                                 <input type="text" class="form-control" id="title" name="title" required>
                             </div>
                             <div class="form-group">
+                                <label for="provincies">Category</label>
+                                <select class="form-control" id="provincies" name="province" required>
+                                    <option value="">Select Category</option>
+                                     <option value="panduan">Panduan Property</option>
+                                     <option value="tips">Tips & Trick</option>
+                                     <option value="design">Design</option>
+                                     <option value="lifestyle">Lifestyle</option>
+                                     <option value="news">Berita Terkini</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
                                 <label for="picture">Picture</label>
                                 <input type="file" class="form-control" id="picture" name="picture">
                             </div>

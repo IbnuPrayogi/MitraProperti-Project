@@ -16,6 +16,7 @@ class BlogRequest extends FormRequest
     {
         return [
             'title' => 'required|string|max:255',
+            'category'=>'required|string',
             'content' => 'required|string',
             'picture' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         ];

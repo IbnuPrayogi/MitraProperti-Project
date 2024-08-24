@@ -49,7 +49,7 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="price">Price</label>
+                                        <label for="price">Prices</label>
                                         <input type="number" step="0.01" class="form-control" id="price" name="price" placeholder="Enter price" required>
                                     </div>
                                 </div>
@@ -65,13 +65,32 @@
                             <!-- Category Field -->
                             <div class="form-group">
                                 <label for="category">Category</label>
-                                <input type="text" class="form-control" id="category" name="category" placeholder="Enter category" required>
+                                <select class="form-control" id="category" name="category" required>
+                                    <option value="">Select Category</option>
+                    
+                                
+                                        <option value="home">Home</option>
+                                        <option value="office">Office</option>
+                                        <option value="kavling">Kavling</option>
+                                        <option value="gudang">Gudang</option>
+                                        <option value="ruko">Ruko</option>
+                                        <option value="apartment">Apartment</option>
+                               
+                          
+                                </select>
                             </div>
 
                             <!-- Cluster Type Field -->
                             <div class="form-group">
                                 <label for="cluster_type">Cluster Type</label>
-                                <input type="text" class="form-control" id="cluster_type" name="cluster_type" placeholder="Enter cluster type" required>
+                                <select class="form-control" id="cluster_type" name="cluster_type" required>
+                                    <option value="">Select Cluster</option>
+                                        <option value="PremiumCluster">Premium Cluster</option>
+                                        <option value="ClasicCluster">Clasic Cluster</option>
+                                        <option value="">None</option>
+                               
+                          
+                                </select>
                             </div>
 
                             <div class=""></div>

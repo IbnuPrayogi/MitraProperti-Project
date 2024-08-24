@@ -32,7 +32,7 @@
         </div>
 
         <div class="grid grid-cols-2  gap-24 mt-8">
-            <a href="{{ route('userblog.show',['userblog'=>$headline->id]) }}">
+            <a href="{{ route('blogs.show',['blog'=>$headline->id]) }}">
                 <div class="">
                     <img src="{{ asset('storage/blog/'.$headline->picture) }}" class=" rounded-lg" alt="">
                     <p class="mt-2 text-[#A2A2A2]">{{ $headline->created_at->format('F j, Y') }}</p>
@@ -47,7 +47,7 @@
 
             <div class="divide-y space-y-8">
                 @foreach ($news as $newsitem)
-                <a href="{{ route('userblog.show',['userblog'=>$newsitem->id]) }}">
+                <a href="{{ route('blogs.show',['blog'=>$newsitem->id]) }}">
                 <div class="grid grid-cols-5 gap-6">
                     <img src="{{ asset('storage/blog/'.$newsitem->picture) }}" class="rounded-lg col-span-2" alt="">
                     <div class="col-span-3">
@@ -76,7 +76,7 @@
 
         <div class="grid grid-cols-4 gap-12 mt-8">
             @foreach ($panduan as $panduanitem)
-                <a href="{{ route('userblog.show',['userblog'=>$panduanitem->id]) }}">
+                <a href="{{ route('blogs.show',['blog'=>$panduanitem->id]) }}">
                     <div class="">
                         <img src="{{ asset('storage/blog/'.$panduanitem->picture) }}" class=" rounded-lg" alt="">
                         <p class="mt-2 text-[#A2A2A2]">{{ $panduanitem->created_at->format('F j, Y') }}</p>
@@ -125,7 +125,7 @@
         <div class="grid grid-cols-3 gap-12 mt-8">
             @foreach ($tips as $tipsitem)
                 <div class="">
-                    <a href="{{ route('userblog.show',['userblog'=>$tipsitem->id]) }}">
+                    <a href="{{ route('blogs.show',['blog'=>$tipsitem->id]) }}">
                     <img src="{{ asset('storage/blog/'.$tipsitem->picture) }}" class=" rounded-lg" alt="">
                     <p class="mt-2 text-[#A2A2A2]">{{ $tipsitem->created_at->format('F j, Y') }}</p>
                     <p class="mt-2 font-semibold text-2xl ">{{ $tipsitem->title }}</p>
@@ -143,11 +143,11 @@
         <div class="flex mt-10 divide-x divide-gray-500 gap-12">
             @foreach ($lifestyle as $lifestyleitem)
             <div class="">
-                <a href="{{ route('userblog.show',['userblog'=>$lifestyleitem->id]) }}">
+                <a href="{{ route('blogs.show',['blog'=>$lifestyleitem->id]) }}">
                 <img src="{{ asset('storage/blog/'.$lifestyleitem->picture) }}" class=" rounded-lg" alt="">
                 <p class="mt-2 text-[#A2A2A2]">{{ $lifestyleitem->created_at->format('F j, Y') }}</p>
                 <p class="mt-2 font-semibold text-2xl text-white">{{$lifestyleitem->title}}</p>
-                <p class="mt-2  text-[#A2A2A2]">P{{$lifestyleitem->content}}</p>
+                <p class="mt-2  text-[#A2A2A2]">{{$lifestyleitem->content}}</p>
                 </a>
             </div>
                 
@@ -169,67 +169,36 @@
 
         <div class="grid grid-cols-2 gap-24 mt-8">
             <div class="divide-y space-y-8">
+                @foreach ($leftdesign as $item)
+                <a href="{{ route('blogs.show',['blog'=>$item->id]) }}">
+                <div class="grid grid-cols-5 gap-6 pt-8">
+                    <img src="{{ asset('storage/blog/'.$item->picture) }}" class="rounded-lg col-span-2"
+                        alt="">
+                    <div class="col-span-3">
+                        <p class="mt-2 text-[#A2A2A2]">{{ $item->created_at->format('F j, Y') }}</p>
+                        <p class="mt-2 font-semibold text-xl me-[7rem]">{{$item->title}}</p>
+                    </div>
+                </div>
+                </a>
+                    
+                @endforeach
              
-                <div class="grid grid-cols-5 gap-6 pt-8">
-                    <img src="{{ asset('images/blog_thumbnail.png') }}" class="rounded-lg col-span-2"
-                        alt="">
-                    <div class="col-span-3">
-                        <p class="mt-2 text-[#A2A2A2]">Mar 24, 2024</p>
-                        <p class="mt-2 font-semibold text-xl me-[7rem]">Cara WNA Beli Properti di Indonesia dan
-                            Persyaratannya</p>
-                    </div>
-                </div>
-
-                <div class="grid grid-cols-5 gap-6 pt-8">
-                    <img src="{{ asset('images/blog_thumbnail.png') }}" class="rounded-lg col-span-2"
-                        alt="">
-                    <div class="col-span-3">
-                        <p class="mt-2 text-[#A2A2A2]">Mar 24, 2024</p>
-                        <p class="mt-2 font-semibold text-xl me-[7rem]">Waspada Modus Penipuan Jual Beli Properti di
-                            Malang, Korban Merugi Ratusan Juta</p>
-                    </div>
-                </div>
-
-                <div class="grid grid-cols-5 gap-6 pt-8">
-                    <img src="{{ asset('images/blog_thumbnail.png') }}" class="rounded-lg col-span-2"
-                        alt="">
-                    <div class="col-span-3">
-                        <p class="mt-2 text-[#A2A2A2]">Mar 24, 2024</p>
-                        <p class="mt-2 font-semibold text-xl me-[7rem]">Waspada Modus Penipuan Jual Beli Properti di
-                            Malang, Korban Merugi Ratusan Juta</p>
-                    </div>
-                </div>
             </div>
 
             <div class="divide-y space-y-8">
-                <div class="grid grid-cols-5 gap-6">
-                    <img src="{{ asset('images/blog_thumbnail.png') }}" class="rounded-lg col-span-2"
-                        alt="">
-                    <div class="col-span-3">
-                        <p class="mt-2 text-[#A2A2A2]">Mar 24, 2024</p>
-                        <p class="mt-2 font-semibold text-xl me-[7rem]">Cara WNA Beli Properti di Indonesia dan
-                            Persyaratannya</p>
-                    </div>
-                </div>
+                @foreach ($rightdesign as $item)
+                <a href="{{ route('blogs.show',['blog'=>$item->id]) }}">
                 <div class="grid grid-cols-5 gap-6 pt-8">
-                    <img src="{{ asset('images/blog_thumbnail.png') }}" class="rounded-lg col-span-2"
+                    <img src="{{ asset('storage/blog/'.$item->picture) }}" class="rounded-lg col-span-2"
                         alt="">
                     <div class="col-span-3">
-                        <p class="mt-2 text-[#A2A2A2]">Mar 24, 2024</p>
-                        <p class="mt-2 font-semibold text-xl me-[7rem]">Cara WNA Beli Properti di Indonesia dan
-                            Persyaratannya</p>
+                        <p class="mt-2 text-[#A2A2A2]">{{ $item->created_at->format('F j, Y') }}</p>
+                        <p class="mt-2 font-semibold text-xl me-[7rem]">{{$item->title}}</p>
                     </div>
                 </div>
-
-                <div class="grid grid-cols-5 gap-6 pt-8">
-                    <img src="{{ asset('images/blog_thumbnail.png') }}" class="rounded-lg col-span-2"
-                        alt="">
-                    <div class="col-span-3">
-                        <p class="mt-2 text-[#A2A2A2]">Mar 24, 2024</p>
-                        <p class="mt-2 font-semibold text-xl me-[7rem]">Waspada Modus Penipuan Jual Beli Properti di
-                            Malang, Korban Merugi Ratusan Juta</p>
-                    </div>
-                </div>
+                </a>
+                    
+                @endforeach
             </div>
 
         </div>

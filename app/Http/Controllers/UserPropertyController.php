@@ -6,6 +6,7 @@ use App\Models\Property;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Storage;
 
 class UserPropertyController extends Controller
 {
@@ -191,8 +192,25 @@ class UserPropertyController extends Controller
     public function show($id)
     {
         $property = Property::where('id',$id)->get()->first();
+
+        $directoryPath = "public/images/".$property->id."/";
+    
+        // Check if directory exists
+        if (!Storage::exists($directoryPath)) {
+            return view('user.detail', ['property','images' => []]); // If no directory, return an empty array
+        }
+    
+        // Get all files from the directory
+        $files = Storage::files($directoryPath);
+        
+        // Filter image files (optional, to ensure only images are processed)
+        $images = array_filter($files, function ($file) {
+            return preg_match('/\.(jpeg|jpg|png|gif)$/i', $file);
+        });
+
    
-        return view('user.detail',compact('property'));
+   
+        return view('user.detail',compact('property','images'));
         //
     }
 

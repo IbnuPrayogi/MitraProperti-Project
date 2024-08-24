@@ -14,7 +14,7 @@
 
 <body class="bg-white font-sans">
     @include('user.partials.navbar')
-    <div class="bg-[#F7F7F7] pt-24 pb-12">
+    <div class="bg-[#F7F7F7] pt-24 pb-12" style="height:600;" >
         {{-- Path --}}
         <div class="container flex items-center space-x-2 mx-auto bg-[#F4BDB9] p-4 rounded-lg text-gray-600">
             @foreach ([['name' => 'Home', 'url' => '/'], ['name' => $property->category, 'url' => '/about'], ['name' => $property->regency, 'url' => '/contact'], ['name' => $property->name, 'url' => '/contact']] as $link)
@@ -29,23 +29,29 @@
 
         {{-- Gallery --}}
 
-        <div class="mx-auto container grid grid-rows-4 grid-flow-col gap-4 mt-10">
-            <div class="col-span-2 row-span-4 object-cover flex ">
-                <img src="{{ asset('images/dummy_property.png') }}" class="rounded-xl " alt="" loading="lazy">
-            </div>
-            <div class="row-span-2 col-span-1">
-                <img src="{{ asset('images/dummy_property.png') }}" class="rounded-xl" alt="" loading="lazy">
-            </div>
-            <div class="row-span-2 col-span-1">
-                <img src="{{ asset('images/dummy_property.png') }}" class="rounded-xl" alt="" loading="lazy">
-            </div>
-            <div class="row-span-2 col-span-1">
-                <img src="{{ asset('images/dummy_property.png') }}" class="rounded-xl" alt="" loading="lazy">
-            </div>
-            <div class="row-span-2 col-span-1">
-                <img src="{{ asset('images/dummy_property.png') }}" class="rounded-xl" alt="" loading="lazy">
+        <div class="mx-auto container grid grid-cols-1 gap-4 mt-10" style=" width: 100%;">
+            <div style="display: flex; flex-direction: row; gap: 20px; align-items: flex-start; width: 100%;">
+                <!-- Main property image covering half of the width -->
+                <div style="flex-basis: 50%; max-width: 50%;">
+                    <img src="{{ Storage::url('public/pictures/'.$property->picture) }}" 
+                         style="width: 100%; height: 320px; object-fit: cover;" 
+                         class="rounded-xl" alt="" loading="lazy">
+                </div>
+                
+                <!-- Container for other images covering the other half -->
+                <div class="grid grid-cols-2 gap-4" style="flex-basis: 50%; max-width: 50%;">
+                    @foreach($images as $image)
+                        <div>
+                            <img src="{{ Storage::url($image) }}" 
+                                 style="width: 100%; height: 150px; object-fit: cover;" 
+                                 class="rounded-xl" alt="" loading="lazy">
+                        </div>
+                    @endforeach
+                </div>
             </div>
         </div>
+        
+        
     </div>
 
     <div class="container mx-auto grid grid-cols-5 mt-8 gap-5">

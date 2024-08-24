@@ -181,6 +181,49 @@ class BlogSeeder extends Seeder
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
+
+
+             // Design Category
+             [
+                'title' => 'design Blog Post 1',
+                'picture' => '3faces.jpg',
+                'content' => 'This is the content of the first design blog post.',
+                'category' => 'design',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'title' => 'design Blog Post 2',
+                'picture' => '3faces.jpg',
+                'content' => 'This is the content of the second design blog post.',
+                'category' => 'design',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'title' => 'design Blog Post 3',
+                'picture' => '3faces.jpg',
+                'content' => 'This is the content of the third design blog post.',
+                'category' => 'design',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'title' => 'design Blog Post 4',
+                'picture' => '3faces.jpg',
+                'content' => 'This is the content of the fourth design blog post.',
+                'category' => 'design',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'title' => 'design Blog Post 5',
+                'picture' => '3faces.jpg',
+                'content' => 'This is the content of the fifth design blog post.',
+                'category' => 'design',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
         ]);
     }
 

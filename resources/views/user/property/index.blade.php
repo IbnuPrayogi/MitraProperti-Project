@@ -100,22 +100,24 @@
     {{-- Cards Grid --}}
     <div class="grid grid-cols-4 gap-10 container mx-auto mt-8 property-container">
         @foreach ($property as $prop)
-            <div class="min-w-[300px] items-center shadow-md rounded-lg inline-block relative property-item"
-                data-property-type="{{ $prop->type }}" data-regency="{{ $prop->regency }}" data-price="{{ $prop->price }}"
-                data-instalment="{{ $prop->instalment }}" data-created_at="{{ $prop->created_at }}">
-                <img src="{{ asset('images/dummy_property.png') }}" class="rounded-t-lg aspect-[18/13]">
-                <div class="p-4 me-3">
-                    <p class="inline-flex rounded-lg items-center px-2 py-1 bg-red-300"><span
-                            class="icon-[bx--home] me-2"></span>{{ $title }}</p>
-                    <p class="text-gray-900 leading-none text-2xl font-semibold me-8 mt-4">{{$prop->name}}</p>
-                    <p class="text-gray-400 font-light flex items-center mt-3">
-                        <span class="icon-[ph--map-pin-light] me-2"></span>{{ $prop->regency }}, Indonesia
-                    </p>
-                    <p class="text-gray-600 mt-3 font-light ">{{ $prop->cluster_type }}, Cicilan {{ $prop->instalment }} Juta/Bulan</p>
-                    <p class="text-red-600 text-2xl mt-3 font-semibold mb-1"><span
-                            class="text-black font-normal text-lg to-inherit me-3">Mulai</span>IDR 3 miliar*</p>
+            <a href="{{ route('userproperty.show', ['userproperty' => $prop->id]) }}" style="text-decoration: none;">
+                <div class="min-w-[300px] items-center shadow-md rounded-lg inline-block relative property-item"
+                    data-property-type="{{ $prop->type }}" data-regency="{{ $prop->regency }}" data-price="{{ $prop->price }}"
+                    data-instalment="{{ $prop->instalment }}" data-created_at="{{ $prop->created_at }}">
+                    <img src="{{ asset('images/dummy_property.png') }}" class="rounded-t-lg aspect-[18/13]">
+                    <div class="p-4 me-3">
+                        <p class="inline-flex rounded-lg items-center px-2 py-1 bg-red-300"><span
+                                class="icon-[bx--home] me-2"></span>{{ $title }}</p>
+                        <p class="text-gray-900 leading-none text-2xl font-semibold me-8 mt-4">{{$prop->name}}</p>
+                        <p class="text-gray-400 font-light flex items-center mt-3">
+                            <span class="icon-[ph--map-pin-light] me-2"></span>{{ $prop->regency }}, Indonesia
+                        </p>
+                        <p class="text-gray-600 mt-3 font-light ">{{ $prop->cluster_type }}, Cicilan {{ $prop->instalment }} Juta/Bulan</p>
+                        <p class="text-red-600 text-2xl mt-3 font-semibold mb-1"><span
+                                class="text-black font-normal text-lg to-inherit me-3">Mulai</span>IDR 3 miliar*</p>
+                    </div>
                 </div>
-            </div>
+            </a>
         @endforeach
     </div>
 

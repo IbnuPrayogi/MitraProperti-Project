@@ -10,9 +10,9 @@ use App\Http\Controllers\Admin\PropertyController;
 use App\Http\Controllers\User\UserDashboardController;
 use App\Http\Controllers\UserBlogController;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+  
+Route::get('/', [UserDashboardController::class, 'index'])->name('user.dashboard');
+
 
 Route::get('/dashboard', function () {
     return view('admin.dashboard');
@@ -43,7 +43,7 @@ Route::get('/properti/ruko', [UserPropertyController::class, 'fetchRuko'])->name
 
 
 
-Route::resource('userblog',UserBlogController::class);
+Route::resource('blogs',UserBlogController::class);
 // web.php (or api.php depending on your routing structure)
 // Route::get('/propertis/{propertyType}', [UserPropertyController::class, 'fetchRegencies']);
 // routes/web.php
@@ -72,43 +72,8 @@ require __DIR__.'/auth.php';
 
 
 
-Route::get('/', function () {
-    return view('user.home');
-
-});
-
-Route::get('/detail', function () {
-    return view('user.detail');
-});
 
 
-Route::get('/rumah', function () {
-    return view('user.rumah');
-});
-
-Route::get('/apartment', function () {
-    return view('user.apartment');
-});
-
-
-Route::get('/ruko', function () {
-    return view('user.ruko');
-});
-
-
-
-Route::get('/kavling', function () {
-    return view('user.kavling');
-});
-
-
-Route::get('/gudang', function () {
-    return view('user.gudang');
-});
-
-Route::get('/office', function () {
-    return view('user.office');
-});
 
 
 Route::get('/contact', function () {
@@ -122,9 +87,7 @@ Route::get('/about', function () {
 });
 
 
-Route::get('/blogs', function() {
-    return view('user.blog');
-});
+
 
 Route::get('/blog-detail', function() {
     return view('user.blog-detail');

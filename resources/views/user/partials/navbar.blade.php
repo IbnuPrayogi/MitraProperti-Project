@@ -177,7 +177,7 @@
                 </li>
 
                 <li class="hoverable">
-                    <a href="/blog" class="relative flex py-6 px-4 lg:p-6 text-sm lg:text-base font-light ">Blog</a>
+                    <a href="/blogs" class="relative flex py-6 px-4 lg:p-6 text-sm lg:text-base font-light ">Blog</a>
                 </li>
 
 

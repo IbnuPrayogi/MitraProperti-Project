@@ -14,6 +14,7 @@ class UserDashboardController extends Controller
      */
     public function index()
     {
+     
         $regencies = Property::select('regency', DB::raw('COUNT(*) as count'))
             ->groupBy('regency')
             ->orderByDesc('count')

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use App\Models\Regency;
 use App\Models\Village;
@@ -11,6 +11,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\StorePropertyRequest;
 use App\Http\Requests\UpdatePropertyRequest;
+use App\Models\NearestArea;
 
 class PropertyController extends Controller
 {
@@ -20,7 +21,9 @@ class PropertyController extends Controller
     public function index()
     {
         $properties = Property::all();
-        return view('admin.property.index', compact('properties'));
+        $regencies = Property::select('regency')->distinct()->get();
+        $categories = Property::select('category')->distinct()->get();
+        return view('admin.property.index', compact('properties','regencies','categories'));
     }
 
     /**
@@ -41,13 +44,15 @@ class PropertyController extends Controller
      */
     public function store(StorePropertyRequest $request)
     {
-        $data = $request->validated();
         
+        $data = $request->validated();
         if ($request->hasFile('picture')) {
             $data['picture'] = $request->file('picture')->getClientOriginalName();
             $request->file('picture')->storeAs('pictures', $data['picture'], 'public');
         }
 
+        
+        
         $province = Province::where('id',$data['province'])->first();
         $data['province'] = $province->name;
         $regency = Regency::where('id',$data['regency'])->first();
@@ -57,27 +62,87 @@ class PropertyController extends Controller
         $village = Village::where('id',$data['village'])->first();
         $data['village'] = $village->name;
 
-        Property::create($data);
+        $property = Property::create($data);
 
-        return redirect()->route('properties.create')->with('success', 'Property created successfully.');
+        $nameId = $property->id;
+        $folderPath = 'public/images/' . $nameId; // Folder path based on name_id
+
+        // Check if the folder exists, if not, create it
+        if (!Storage::exists($folderPath)) {
+            Storage::makeDirectory($folderPath);
+        }
+
+       
+
+        $filePaths = [];
+        if($data['pictures']) {
+            foreach ($data['pictures'] as $file) {
+                $filename = $file->getClientOriginalName();
+                $path = $file->storeAs($folderPath, $filename); // Store file in the folder
+                $filePaths[] = $path;
+            }
+        }
+
+        if($request->hasAny('area1')){
+            NearestArea::create([
+                'property_id' => $property->id,
+                'name' =>$data['area1'],
+                'distance' =>$data['distance1'],
+            ]);
+        }
+
+        if($request->hasAny('area2')){
+            NearestArea::create([
+                'property_id' => $property->id,
+                'name' =>$data['area2'],
+                'distance' =>$data['distance2'],
+            ]);
+        }
+
+        if($request->hasAny('area3')){
+            NearestArea::create([
+                'property_id' => $property->id,
+                'name' =>$data['area3'],
+                'distance' =>$data['distance3'],
+            ]);
+        }
+
+        
+
+        return redirect()->route('property.index')->with('success', 'Property created successfully.');
     }
 
     public function update(UpdatePropertyRequest $request, Property $property)
     {
-        $data = $request->validated();
+        try{
+          
+            $data = $request->validated();
         
-        if ($request->hasFile('picture')) {
-            // Remove old picture if exists
-            if ($property->picture) {
-                Storage::delete('public/pictures/' . $property->picture);
+            if ($request->hasFile('picture')) {
+                // Remove old picture if exists
+                if ($property->picture) {
+                    Storage::delete('public/pictures/' . $property->picture);
+                }
+                $data['picture'] = $request->file('picture')->getClientOriginalName();
+                $request->file('picture')->storeAs('pictures', $data['picture'], 'public');
             }
-            $data['picture'] = $request->file('picture')->getClientOriginalName();
-            $request->file('picture')->storeAs('pictures', $data['picture'], 'public');
+
+            $property->update($data);
+
+            return redirect()->route('properties.index')->with('success', 'Property updated successfully.');
+
+        }
+        catch (\Illuminate\Validation\ValidationException $e) {
+            // This will catch validation errors and provide a response
+            return response()->json(['errors' => $e->errors()], 422);
+        } catch (\Exception $e) {
+            // This will catch any other errors
+            return response()->json(['error' => $e->getMessage()], 500);
         }
 
-        $property->update($data);
+        
 
-        return redirect()->route('properties.index')->with('success', 'Property updated successfully.');
+        
     }
 
     /**

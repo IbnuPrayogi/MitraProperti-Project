@@ -61,7 +61,7 @@
 <body class="bg-gray-200 font-sans leading-normal tracking-normal">
     <nav class="fixed top-0 left-0 w-full bg-white border-b-2 border-gray-300 text-gray-900 z-50">
         <div class="container mx-auto flex justify-between">
-            <a href="/">
+            <a href="{{ route('userdashboard.index') }}">
                 <img class="h-16 my-auto" src="{{ asset('images/logo.png') }}" alt="Logo" srcset="">
             </a>
             <ul class="flex">
@@ -82,7 +82,7 @@
                                 <h2 class="font-light text-red-600 text-lg mb-2">Tipe</h2>
                                 <div class="sm:grid sm:grid-cols-2 sm:gap-3 lg:flex lg:space-x-5">
                                     {{-- Type Card --}}
-                                    <a href="/rumah">
+                                    <a href="{{ route('userproperty.fetchrumah') }}">
                                         <div class="inline-block p-3 ring-2 ring-slate-300 rounded-md">
                                             <p class="px-4 py-1 rounded-full bg-slate-300 mb-2">Properti Baru</p>
                                             <div class="flex space-x-3">
@@ -94,7 +94,7 @@
                                     </a>
 
                                     {{-- Apartment --}}
-                                    <a href="/apartment">
+                                    <a href="{{ route('userproperty.fetchapartment') }}">
                                         <div class="inline-block p-3 ring-2 ring-slate-300 rounded-md">
                                             <p class="px-4 py-1 rounded-full bg-slate-300 mb-2">Properti Baru</p>
                                             <div class="flex space-x-3">
@@ -106,7 +106,7 @@
                                     </a>
 
                                     {{-- Ruko --}}
-                                    <a href="/ruko">
+                                    <a href="{{ route('userproperty.fetchruko') }}">
                                         <div class="inline-block p-3 ring-2 ring-slate-300 rounded-md">
                                             <p class="px-4 py-1 rounded-full bg-slate-300 mb-2">Properti Baru</p>
                                             <div class="flex space-x-3">
@@ -117,7 +117,7 @@
                                     </a>
 
                                     {{-- Kavling --}}
-                                    <a href="/kavling">
+                                    <a href="{{ route('userproperty.fetchkavling') }}">
                                         <div class="inline-block p-3 ring-2 ring-slate-300 rounded-md">
                                             <p class="px-4 py-1 rounded-full bg-slate-300 mb-2">Properti Baru</p>
                                             <div class="flex space-x-3">
@@ -127,7 +127,7 @@
                                         </div>
                                     </a>
 
-                                    <a href="/gudang">
+                                    <a href="{{ route('userproperty.fetchgudang') }}">
                                         <div class="inline-block p-3 ring-2 ring-slate-300 rounded-md">
                                             <p class="px-4 py-1 rounded-full bg-slate-300 mb-2">Properti Baru</p>
                                             <div class="flex space-x-3">
@@ -138,7 +138,7 @@
                                         </div>
                                     </a>
 
-                                    <a href="/office">
+                                    <a href="{{ route('userproperty.fetchoffice') }}">
                                         <div class="inline-block p-3 ring-2 ring-slate-300 rounded-md">
                                             <p class="px-4 py-1 rounded-full bg-slate-300 mb-2">Properti Baru</p>
                                             <div class="flex space-x-3">
@@ -177,7 +177,7 @@
                 </li>
 
                 <li class="hoverable">
-                    <a href="/blog" class="relative flex py-6 px-4 lg:p-6 text-sm lg:text-base font-light ">Blog</a>
+                    <a href="/blogs" class="relative flex py-6 px-4 lg:p-6 text-sm lg:text-base font-light ">Blog</a>
                 </li>
 
 

@@ -49,12 +49,24 @@
                     <td>{{ substr($blog->content, 0, 100) . (strlen($blog->content) > 100 ? '...' : '') }}</td>
                 
                     <td>
-                      <a href="{{ route('blog.edit', $blog->id) }}" class="btn btn-warning btn-sm">Edit</a>
-                      <form action="{{ route('blog.destroy', $blog->id) }}" method="POST" style="display:inline;">
-                          @csrf
-                          @method('DELETE')
-                          <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this property?')">Delete</button>
-                      </form>
+                      <!-- Edit Button -->
+<a href="{{ route('blog.edit', $blog->id) }}" class="btn btn-warning btn-sm" title="Edit">
+    <i class="fas fa-edit"></i>
+</a>
+
+<!-- Delete Button -->
+<form action="{{ route('blog.destroy', $blog->id) }}" method="POST" style="display:inline;">
+    @csrf
+    @method('DELETE')
+    <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this property?')" title="Delete">
+        <i class="fas fa-trash-alt"></i>
+    </button>
+</form>
+
+<!-- Show Button -->
+<a href="{{ route('blog.show', $blog->id) }}" class="btn btn-info btn-sm" title="Show">
+    <i class="fas fa-eye"></i>
+</a>
                   </td>
                   </tr>
                 @endforeach

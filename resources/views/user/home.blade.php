@@ -20,6 +20,7 @@
 <body class="bg-white">
     {{-- Navbar --}}
     @include('user.partials.navbar')
+    
 
     {{-- Hero Image --}}
     <div class="bg-center bg-cover" style="background-image: url('{{ asset('images/backgroundhero.png') }}');">
@@ -107,60 +108,33 @@
 
         <div class="grid grid-cols-1 md:grid-cols-3 gap-x-20 gap-y-10">
             {{-- Items --}}
-            <div class="flex items-center p-[1.81rem] shadow-md rounded-lg bg-[#f2f2f2]">
-                <img src="{{ asset('images/dummy_city.png') }}" class="w-28 rounded-full aspect-square">
-                <div class="text-sm ms-[2rem]">
-                    <p class="text-gray-900 leading-none text-lg font-semibold mb-2">Jakarta</p>
-                    <p class="text-gray-600">Start Cicilan</p>
-                    <p class="text-lg text-red-600 font-light">9 Juta</p>
-                </div>
-            </div>
+            @foreach ($topproperties as $topproperty)
+                <div class="flex items-center p-[1.81rem] shadow-md rounded-lg bg-[#f2f2f2]">
+                    @php
+                        $imagePath = !empty($topproperty->picture) ? 'images/' . $topproperty->picture : null;
+                        $defaultImagePath = 'images/dummy_property.png';
 
-            <div class="flex items-center p-[1.81rem] shadow-md rounded-lg bg-[#f2f2f2]">
-                <img src="{{ asset('images/dummy_city.png') }}" class="w-28 rounded-full aspect-square">
-                <div class="text-sm ms-[2rem]">
-                    <p class="text-gray-900 leading-none text-lg font-semibold mb-2">Jakarta</p>
-                    <p class="text-gray-600">Start Cicilan</p>
-                    <p class="text-lg text-red-600 font-light">9 Juta</p>
-                </div>
-            </div>
+                        if ($imagePath && file_exists(public_path($imagePath))) {
+                            $imageUrl = asset($imagePath);
+                        } else {
+                            $imageUrl = asset($defaultImagePath);
+                        }
+                    @endphp
 
-            <div class="flex items-center p-[1.81rem] shadow-md rounded-lg bg-[#f2f2f2]">
-                <img src="{{ asset('images/dummy_city.png') }}" class="w-28 rounded-full aspect-square">
-                <div class="text-sm ms-[2rem]">
-                    <p class="text-gray-900 leading-none text-lg font-semibold mb-2">Jakarta</p>
-                    <p class="text-gray-600">Start Cicilan</p>
-                    <p class="text-lg text-red-600 font-light">9 Juta</p>
+                    
+                    <img src="{{ asset($imageUrl) }}" class="w-28 rounded-full aspect-square">
+                    <div class="text-sm ms-[2rem]">
+                        <p class="text-gray-900 leading-none text-lg font-semibold mb-2">{{ $topproperty->name }}</p>
+                        <p class="text-gray-600">Start Cicilan</p>
+                        @php
+                            $instalment = $topproperty->instalment / 1000000;
+                        @endphp
+                        <p class="text-lg text-red-600 font-light">{{ $instalment}} Juta</p>
+                    </div>
                 </div>
-            </div>
-
-            <div class="flex items-center p-[1.81rem] shadow-md rounded-lg bg-[#f2f2f2]">
-                <img src="{{ asset('images/dummy_city.png') }}" class="w-28 rounded-full aspect-square">
-                <div class="text-sm ms-[2rem]">
-                    <p class="text-gray-900 leading-none text-lg font-semibold mb-2">Jakarta</p>
-                    <p class="text-gray-600">Start Cicilan</p>
-                    <p class="text-lg text-red-600 font-light">9 Juta</p>
-                </div>
-            </div>
-            <div class="flex items-center p-[1.81rem] shadow-md rounded-lg bg-[#f2f2f2]">
-                <img src="{{ asset('images/dummy_city.png') }}" class="w-28 rounded-full aspect-square">
-                <div class="text-sm ms-[2rem]">
-                    <p class="text-gray-900 leading-none text-lg font-semibold mb-2">Jakarta</p>
-                    <p class="text-gray-600">Start Cicilan</p>
-                    <p class="text-lg text-red-600 font-light">9 Juta</p>
-                </div>
-            </div>
-
-            <div class="flex items-center p-[1.81rem] shadow-md rounded-lg bg-[#f2f2f2]">
-                <img src="{{ asset('images/dummy_city.png') }}" class="w-28 rounded-full aspect-square">
-                <div class="text-sm ms-[2rem]">
-                    <p class="text-gray-900 leading-none text-lg font-semibold mb-2">Jakarta</p>
-                    <p class="text-gray-600">Start Cicilan</p>
-                    <p class="text-lg text-red-600 font-light">9 Juta</p>
-                </div>
-            </div>
-
-
+                
+            @endforeach
+      
         </div>
     </div>
 
@@ -173,12 +147,16 @@
         </p>
 
         <div class="swiper mySwiper">
+     
+                
+            
             <div class="swiper-wrapper pb-10">
                 <div class="swiper-slide">
                     <div class="flex space-x-10 mx-auto">
                         {{-- Items --}}
-                        @for ($i = 0; $i < 4; $i++)
-                            <div class="min-w-[300px] items-center shadow-md rounded-lg inline-block relative">
+                        @foreach ($firstPart as $property)
+                        <a href="{{ route('userproperty.show', ['userproperty' => $property->id]) }}" style="text-decoration: none;">
+                            <div href class="min-w-[300px] items-center shadow-md rounded-lg inline-block relative">
                                 <div
                                     class="absolute bg-red-600 text-white -right-3 rounded-e-full rounded-t-full h-14 px-2 top-1 z-[-1]">
                                 </div>
@@ -187,64 +165,97 @@
                                     <span class="icon-[solar--medal-ribbons-star-line-duotone] mr-2 text-lg"></span>New
                                     Launching
                                 </div>
-                                <img src="{{ asset('images/dummy_property.png') }}"
+                                @php
+                                    $imagePath = !empty($property->picture) ? 'images/' . $property->picture : null;
+                                    $defaultImagePath = 'images/dummy_property.png';
+
+                                    if ($imagePath && file_exists(public_path($imagePath))) {
+                                        $imageUrl = asset($imagePath);
+                                    } else {
+                                        $imageUrl = asset($defaultImagePath);
+                                    }
+                                @endphp
+                                <img src="{{ asset($imageUrl) }}"
                                     class="rounded-t-lg mb-4 aspect-[18/13]">
 
                                 <div class="p-4 me-16">
-                                    <p class="text-red-600 text-2xl font-semibold mb-1">IDR 3 miliar*</p>
-                                    <p class="text-gray-900 leading-none text-2xl font-semibold mb-4">Spring Residence
+   
+                                    <p class="text-red-600 text-2xl font-semibold mb-1">IDR {{ number_format($property->price) }}*</p>
+                                    <p class="text-gray-900 leading-none text-2xl font-semibold mb-4">{{ $property->name }}
                                         at
-                                        Sentul
-                                        City</p>
-                                    <p class="text-gray-600 mb-1 text-lg font-light me-5">Tanda DP, cicilan 15
+                                        {{$property->regency}}</p>
+                                        @php
+                                            $instalments = $property->instalment / 1000000;
+                                        @endphp
+                                    <p class="text-gray-600 mb-1 text-lg font-light me-5">Tanda DP, cicilan 
+                                    </p>
+                                    <p class="text-gray-600 mb-1 text-lg font-light me-5">{{ $instalments }}
                                         Juta/Bulan
                                     </p>
                                     <p class="text-lg text-gray-400 font-light flex items-center">
-                                        <span class="icon-[ph--map-pin-light] me-2"></span>Bekasi, Indonesia
+                                        <span class="icon-[ph--map-pin-light] me-2"></span>{{ $property->regency }}, {{ $property->province }}
                                     </p>
                                 </div>
                             </div>
-                        @endfor
+                        </a>
+                        @endforeach
                     </div>
                 </div>
                 <div class="swiper-slide">
                     <div class="flex space-x-10 container mx-auto">
                         {{-- Items --}}
-                        @for ($i = 0; $i < 4; $i++)
-                            <div class="min-w-[300px] items-center shadow-md rounded-lg inline-block relative">
-                                <div
-                                    class="absolute bg-red-600 text-white -right-3 rounded-e-full rounded-t-full h-14 px-2 top-1 z-[-1]">
-                                </div>
-                                <div
-                                    class="absolute bg-red-600 text-white right-0 px-4 py-2 rounded-s-md top-5 shadow-md flex items-center">
-                                    <span class="icon-[solar--medal-ribbons-star-line-duotone] mr-2 text-lg"></span>New
-                                    Launching
-                                </div>
-                                <img src="{{ asset('images/dummy_property.png') }}"
-                                    class="rounded-t-lg mb-4 aspect-[18/13]">
+                        @foreach ($secondPart as $property)
+                            <a href="{{ route('userproperty.show', ['userproperty' => $property->id]) }}" style="text-decoration: none;">
+                                <div class="min-w-[300px] items-center shadow-md rounded-lg inline-block relative">
+                                    <div
+                                        class="absolute bg-red-600 text-white -right-3 rounded-e-full rounded-t-full h-14 px-2 top-1 z-[-1]">
+                                    </div>
+                                    <div
+                                        class="absolute bg-red-600 text-white right-0 px-4 py-2 rounded-s-md top-5 shadow-md flex items-center">
+                                        <span class="icon-[solar--medal-ribbons-star-line-duotone] mr-2 text-lg"></span>New
+                                        Launching
+                                    </div>
+                                    @php
+                                        $imagePath = !empty($property->picture) ? 'images/' . $property->picture : null;
+                                        $defaultImagePath = 'images/dummy_property.png';
 
-                                <div class="p-4 me-16">
-                                    <p class="text-red-600 text-2xl font-semibold mb-1">IDR 3 miliar*</p>
-                                    <p class="text-gray-900 leading-none text-2xl font-semibold mb-4">Spring Residence
-                                        at
-                                        Sentul
-                                        City</p>
-                                    <p class="text-gray-600 mb-1 text-lg font-light me-5">Tanda DP, cicilan 15
+                                        if ($imagePath && file_exists(public_path($imagePath))) {
+                                            $imageUrl = asset($imagePath);
+                                        } else {
+                                            $imageUrl = asset($defaultImagePath);
+                                        }
+                                    @endphp
+                                    <img src="{{ asset($imageUrl) }}"
+                                        class="rounded-t-lg mb-4 aspect-[18/13]">
+
+                                    <div class="p-4 me-16">
+                                        <p class="text-red-600 text-2xl font-semibold mb-1">IDR {{ number_format($property->price) }}*</p>
+                                        <p class="text-gray-900 leading-none text-2xl font-semibold mb-4">{{ $property->name }}
+                                            at
+                                            {{$property->regency}}</p>
+                                            @php
+                                            $instalments = $property->instalment / 1000000;
+                                        @endphp
+                                    <p class="text-gray-600 mb-1 text-lg font-light me-5">Tanda DP, cicilan 
+                                    </p>
+                                    <p class="text-gray-600 mb-1 text-lg font-light me-5">{{ $instalments }}
                                         Juta/Bulan
                                     </p>
-                                    <p class="text-lg text-gray-400 font-light flex items-center">
-                                        <span class="icon-[ph--map-pin-light] me-2"></span>Bekasi, Indonesia
-                                    </p>
+                                        <p class="text-lg text-gray-400 font-light flex items-center">
+                                            <span class="icon-[ph--map-pin-light] me-2"></span>{{ $property->regency }}, {{ $property->province }}
+                                        </p>
+                                    </div>
                                 </div>
-                            </div>
-                        @endfor
+                            </a>
+                        @endforeach
                     </div>
                 </div>
 
                 <div class="swiper-slide">
                     <div class="flex space-x-10 container mx-auto">
                         {{-- Items --}}
-                        @for ($i = 0; $i < 4; $i++)
+                        @foreach ($thirdPart as $property)
+                        <a href="{{ route('userproperty.show', ['userproperty' => $property->id]) }}" style="text-decoration: none;">
                             <div class="min-w-[300px] items-center shadow-md rounded-lg inline-block relative">
                                 <div
                                     class="absolute bg-red-600 text-white -right-3 rounded-e-full rounded-t-full h-14 px-2 top-1 z-[-1]">
@@ -254,24 +265,39 @@
                                     <span class="icon-[solar--medal-ribbons-star-line-duotone] mr-2 text-lg"></span>New
                                     Launching
                                 </div>
-                                <img src="{{ asset('images/dummy_property.png') }}"
+                                @php
+                                    $imagePath = !empty($property->picture) ? 'images/' . $property->picture : null;
+                                    $defaultImagePath = 'images/dummy_property.png';
+
+                                    if ($imagePath && file_exists(public_path($imagePath))) {
+                                        $imageUrl = asset($imagePath);
+                                    } else {
+                                        $imageUrl = asset($defaultImagePath);
+                                    }
+                                @endphp
+                                <img src="{{ asset($imageUrl) }}"
                                     class="rounded-t-lg mb-4 aspect-[18/13]">
 
-                                <div class="p-4 me-16">
-                                    <p class="text-red-600 text-2xl font-semibold mb-1">IDR 3 miliar*</p>
-                                    <p class="text-gray-900 leading-none text-2xl font-semibold mb-4">Spring Residence
-                                        at
-                                        Sentul
-                                        City</p>
-                                    <p class="text-gray-600 mb-1 text-lg font-light me-5">Tanda DP, cicilan 15
+                                    <div class="p-4 me-16">
+                                        <p class="text-red-600 text-2xl font-semibold mb-1">IDR {{ number_format($property->price) }}*</p>
+                                        <p class="text-gray-900 leading-none text-2xl font-semibold mb-4">{{ $property->name }}
+                                            at
+                                            {{$property->regency}}</p>
+                                            @php
+                                            $instalments = $property->instalment / 1000000;
+                                        @endphp
+                                    <p class="text-gray-600 mb-1 text-lg font-light me-5">Tanda DP, cicilan 
+                                    </p>
+                                    <p class="text-gray-600 mb-1 text-lg font-light me-5">{{ $instalments }}
                                         Juta/Bulan
                                     </p>
-                                    <p class="text-lg text-gray-400 font-light flex items-center">
-                                        <span class="icon-[ph--map-pin-light] me-2"></span>Bekasi, Indonesia
-                                    </p>
-                                </div>
+                                        <p class="text-lg text-gray-400 font-light flex items-center">
+                                            <span class="icon-[ph--map-pin-light] me-2"></span>{{ $property->regency }}, {{ $property->province }}
+                                        </p>
+                                    </div>
                             </div>
-                        @endfor
+                        </a>
+                        @endforeach
                     </div>
                 </div>
             </div>
@@ -288,73 +314,57 @@
 
         {{-- Chip --}}
         <div class="space-x-8 mb-10">
-            <button class="py-2 px-4 bg-red-600 text-white rounded-md">
+            <button class="py-2 px-4 bg-red-600 text-white rounded-md" onclick="setActive(this, 'all')">
                 Untuk Kamu
             </button>
-
-            <button class="py-2 px-4  text-black rounded-md">
-                Jakarta
-            </button>
-
-            <button class="py-2 px-4  text-black rounded-md">
-                Tangerang
-            </button>
-
-            <button class="py-2 px-4  text-black rounded-md">
-                Bekasi
-            </button>
-
-            <button class="py-2 px-4  text-black rounded-md">
-                Depok
-            </button>
-
-            <button class="py-2 px-4  text-black rounded-md">
-                Bandung
-            </button>
-
-            <button class="py-2 px-4  text-black rounded-md">
-                Bogor
-            </button>
-
-            <button class="py-2 px-4  text-black rounded-md">
-                Cibubur
-            </button>
-
-            <button class="py-2 px-4  text-black rounded-md">
-                Surabaya
-            </button>
-
-            <button class="py-2 px-4  text-black rounded-md">
-                PIK
-            </button>
-
-
+            @foreach ($regencies as $regency)
+                <button class="py-2 px-4 text-black rounded-md" onclick="setActive(this, '{{ $regency }}')">
+                    {{ $regency }}
+                </button>
+            @endforeach
         </div>
-
+        
         {{-- Cards Grid --}}
-        <div class="grid grid-cols-4 gap-10 container mx-auto">
+        <div class="grid grid-cols-4 gap-10 container mx-auto" id="property-grid">
             {{-- Items --}}
-            @for ($i = 0; $i < 16; $i++)
-                <div class="min-w-[300px] items-center shadow-md rounded-lg inline-block relative">
+            @foreach ($bottomproperties as $property)
+            <a href="{{ route('userproperty.show', ['userproperty' => $property->id]) }}" style="text-decoration: none;">
+                <div class="min-w-[300px] items-center shadow-md rounded-lg inline-block relative property-card"
+                     data-regency="{{ $property->regency }}">
+                     @php
+                                    $imagePath = !empty($property->picture) ? 'images/' . $property->picture : null;
+                                    $defaultImagePath = 'images/dummy_property.png';
 
-                    <img src="{{ asset('images/dummy_property.png') }}" class="rounded-t-lg mb-4 aspect-[18/13]">
-
+                                    if ($imagePath && file_exists(public_path($imagePath))) {
+                                        $imageUrl = asset($imagePath);
+                                    } else {
+                                        $imageUrl = asset($defaultImagePath);
+                                    }
+                                @endphp
+        
+                    <img src="{{ asset($imageUrl) }}" class="rounded-t-lg mb-4 aspect-[18/13]">
+        
                     <div class="p-4 me-16">
-                        <p class="text-red-600 text-2xl font-semibold mb-1">IDR 3 miliar*</p>
-                        <p class="text-gray-900 leading-none text-2xl font-semibold mb-4">Spring Residence
-                            at
-                            Sentul
-                            City</p>
-                        <p class="text-gray-600 mb-1 text-lg font-light me-5">Tanda DP, cicilan 15
+                        <p class="text-red-600 text-2xl font-semibold mb-1">IDR {{ number_format($property->price) }}*</p>
+                        <p class="text-gray-900 leading-none text-2xl font-semibold mb-4">{{ $property->name }} at
+                            {{$property->regency}}</p>
+                            @php
+                                            $instalment = $property->instalment / 1000000;
+                                        @endphp
+                        <p class="text-gray-600 mb-1 text-lg font-light me-5">Tanda DP, cicilan {{ $instalment }}
                             Juta/Bulan
                         </p>
                         <p class="text-lg text-gray-400 font-light flex items-center">
-                            <span class="icon-[ph--map-pin-light] me-2"></span>Bekasi, Indonesia
+                            <span class="icon-[ph--map-pin-light] me-2"></span>{{ $property->regency }}, {{ $property->province }}
                         </p>
                     </div>
                 </div>
-            @endfor
+            </a>
+            @endforeach
         </div>
+        
+        
+        
     </div>
 
     {{-- Footer --}}
@@ -377,6 +387,28 @@
                 clickable: true,
             },
         });
+    </script>
+    
+    <script>
+        function setActive(button, regency) {
+            // Remove active class from all buttons
+            document.querySelectorAll('button').forEach(btn => {
+                btn.classList.remove('bg-red-600', 'text-white');
+                btn.classList.add('text-black');
+            });
+
+            // Add active class to the clicked button
+            button.classList.add('bg-red-600', 'text-white');
+
+            // Show/Hide property cards based on the selected regency
+            document.querySelectorAll('.property-card').forEach(card => {
+                if (regency === 'all' || card.dataset.regency === regency) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
     </script>
 </body>
 

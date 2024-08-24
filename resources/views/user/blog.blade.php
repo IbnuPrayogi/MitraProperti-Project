@@ -32,42 +32,32 @@
         </div>
 
         <div class="grid grid-cols-2  gap-24 mt-8">
-            <div class="">
-                <img src="{{ asset('images/blog_thumbnail.png') }}" class=" rounded-lg" alt="">
-                <p class="mt-2 text-[#A2A2A2]">Mar 24, 2024</p>
-                <p class="mt-2 font-semibold text-2xl me-[8rem]">Penjualan Properti Menggeliat Lagi, Rumah di Bawah Rp
-                    500 Juta Paling Dicari</p>
-                <p class="mt-2  me-[8rem]">Pasar properti hunian menunjukkan tren positif di kuartal pertama tahun 2024
-                    dengan permintaan yang masih terus meningkat. Minat masyarakat untuk memperoleh tempat tinggal
-                    ternyata tetap tinggi pada masa pilpres hingga sekarang ini.</p>
-            </div>
+            <a href="{{ route('blogs.show',['blog'=>$headline->id]) }}">
+                <div class="">
+                    <img src="{{ asset('storage/blog/'.$headline->picture) }}" class=" rounded-lg" alt="">
+                    <p class="mt-2 text-[#A2A2A2]">{{ $headline->created_at->format('F j, Y') }}</p>
+                    <p class="mt-2 font-semibold text-2xl me-[8rem]">{{$headline->title}}</p>
+                    <p class="mt-2  me-[8rem]">{{$headline->content}}</p>
+                </div>
+
+            </a>
+            
+
+            
 
             <div class="divide-y space-y-8">
+                @foreach ($news as $newsitem)
+                <a href="{{ route('blogs.show',['blog'=>$newsitem->id]) }}">
                 <div class="grid grid-cols-5 gap-6">
-                    <img src="{{ asset('images/blog_thumbnail.png') }}" class="rounded-lg col-span-2" alt="">
+                    <img src="{{ asset('storage/blog/'.$newsitem->picture) }}" class="rounded-lg col-span-2" alt="">
                     <div class="col-span-3">
-                        <p class="mt-2 text-[#A2A2A2]">Mar 24, 2024</p>
-                        <p class="mt-2 font-semibold text-xl me-[7rem]">Cara WNA Beli Properti di Indonesia dan
-                            Persyaratannya</p>
+                        <p class="mt-2 text-[#A2A2A2]">{{ $newsitem->created_at->format('F j, Y') }}</p>
+                        <p class="mt-2 font-semibold text-xl me-[7rem]">{{ $newsitem->title }}</p>
                     </div>
                 </div>
-                <div class="grid grid-cols-5 gap-6 pt-8">
-                    <img src="{{ asset('images/blog_thumbnail.png') }}" class="rounded-lg col-span-2" alt="">
-                    <div class="col-span-3">
-                        <p class="mt-2 text-[#A2A2A2]">Mar 24, 2024</p>
-                        <p class="mt-2 font-semibold text-xl me-[7rem]">Cara WNA Beli Properti di Indonesia dan
-                            Persyaratannya</p>
-                    </div>
-                </div>
-
-                <div class="grid grid-cols-5 gap-6 pt-8">
-                    <img src="{{ asset('images/blog_thumbnail.png') }}" class="rounded-lg col-span-2" alt="">
-                    <div class="col-span-3">
-                        <p class="mt-2 text-[#A2A2A2]">Mar 24, 2024</p>
-                        <p class="mt-2 font-semibold text-xl me-[7rem]">Waspada Modus Penipuan Jual Beli Properti di
-                            Malang, Korban Merugi Ratusan Juta</p>
-                    </div>
-                </div>
+                </a>
+                @endforeach
+             
             </div>
 
 
@@ -85,17 +75,16 @@
         </div>
 
         <div class="grid grid-cols-4 gap-12 mt-8">
-            @for ($i = 0; $i < 4; $i++)
-                <div class="">
-                    <img src="{{ asset('images/blog_thumbnail.png') }}" class=" rounded-lg" alt="">
-                    <p class="mt-2 text-[#A2A2A2]">Mar 24, 2024</p>
-                    <p class="mt-2 font-semibold text-2xl ">Penjualan Properti Menggeliat Lagi, Rumah di Bawah Rp
-                        500 Juta Paling Dicari</p>
-                    <p class="mt-2  ">Pasar properti hunian menunjukkan tren positif di kuartal pertama tahun 2024
-                        dengan permintaan yang masih terus meningkat. Minat masyarakat untuk memperoleh tempat tinggal
-                        ternyata tetap tinggi pada masa pilpres hingga sekarang ini.</p>
-                </div>
-            @endfor
+            @foreach ($panduan as $panduanitem)
+                <a href="{{ route('blogs.show',['blog'=>$panduanitem->id]) }}">
+                    <div class="">
+                        <img src="{{ asset('storage/blog/'.$panduanitem->picture) }}" class=" rounded-lg" alt="">
+                        <p class="mt-2 text-[#A2A2A2]">{{ $panduanitem->created_at->format('F j, Y') }}</p>
+                        <p class="mt-2 font-semibold text-2xl ">{{ $panduanitem->title }}</p>
+                        <p class="mt-2  ">{{ $panduanitem->content }}</p>
+                    </div>
+                </a>
+            @endforeach
 
 
         </div>
@@ -130,21 +119,20 @@
             <p class="flex justify-center items-center align-middle bg-[#EE3729] aspect-square h-8 rounded-full  me-3">
                 <span class="icon-[material-symbols--developer-guide] text-[21px] text-white"></span>
             </p>
-            <p class="flex items-center text-xl font-semibold text-[#EE3729]">Panduan Properti</p>
+            <p class="flex items-center text-xl font-semibold text-[#EE3729]">Tips & Trick</p>
         </div>
 
         <div class="grid grid-cols-3 gap-12 mt-8">
-            @for ($i = 0; $i < 6; $i++)
+            @foreach ($tips as $tipsitem)
                 <div class="">
-                    <img src="{{ asset('images/blog_thumbnail.png') }}" class=" rounded-lg" alt="">
-                    <p class="mt-2 text-[#A2A2A2]">Mar 24, 2024</p>
-                    <p class="mt-2 font-semibold text-2xl ">Penjualan Properti Menggeliat Lagi, Rumah di Bawah Rp
-                        500 Juta Paling Dicari</p>
-                    <p class="mt-2  ">Pasar properti hunian menunjukkan tren positif di kuartal pertama tahun 2024
-                        dengan permintaan yang masih terus meningkat. Minat masyarakat untuk memperoleh tempat tinggal
-                        ternyata tetap tinggi pada masa pilpres hingga sekarang ini.</p>
+                    <a href="{{ route('blogs.show',['blog'=>$tipsitem->id]) }}">
+                    <img src="{{ asset('storage/blog/'.$tipsitem->picture) }}" class=" rounded-lg" alt="">
+                    <p class="mt-2 text-[#A2A2A2]">{{ $tipsitem->created_at->format('F j, Y') }}</p>
+                    <p class="mt-2 font-semibold text-2xl ">{{ $tipsitem->title }}</p>
+                    <p class="mt-2  ">{{ $tipsitem->content }}</p>
+                </a>
                 </div>
-            @endfor
+            @endforeach
         </div>
     </div>
 
@@ -153,38 +141,18 @@
     <div class="container mx-auto mt-28 bg-black p-[3rem] rounded-xl">
         <p class="flex items-center text-xl font-semibold text-[#EE3729]">Lifestyle</p>
         <div class="flex mt-10 divide-x divide-gray-500 gap-12">
+            @foreach ($lifestyle as $lifestyleitem)
             <div class="">
-                <img src="{{ asset('images/blog_thumbnail.png') }}" class=" rounded-lg" alt="">
-                <p class="mt-2 text-[#A2A2A2]">Mar 24, 2024</p>
-                <p class="mt-2 font-semibold text-2xl text-white">Penjualan Properti Menggeliat Lagi, Rumah di Bawah Rp
-                    500 Juta Paling Dicari</p>
-                <p class="mt-2  text-[#A2A2A2]">Pasar properti hunian menunjukkan tren positif di kuartal pertama tahun
-                    2024
-                    dengan permintaan yang masih terus meningkat. Minat masyarakat untuk memperoleh tempat tinggal
-                    ternyata tetap tinggi pada masa pilpres hingga sekarang ini.</p>
+                <a href="{{ route('blogs.show',['blog'=>$lifestyleitem->id]) }}">
+                <img src="{{ asset('storage/blog/'.$lifestyleitem->picture) }}" class=" rounded-lg" alt="">
+                <p class="mt-2 text-[#A2A2A2]">{{ $lifestyleitem->created_at->format('F j, Y') }}</p>
+                <p class="mt-2 font-semibold text-2xl text-white">{{$lifestyleitem->title}}</p>
+                <p class="mt-2  text-[#A2A2A2]">{{$lifestyleitem->content}}</p>
+                </a>
             </div>
-
-            <div class="ps-12">
-                <img src="{{ asset('images/blog_thumbnail.png') }}" class=" rounded-lg" alt="">
-                <p class="mt-2 text-[#A2A2A2]">Mar 24, 2024</p>
-                <p class="mt-2 font-semibold text-2xl text-white">Penjualan Properti Menggeliat Lagi, Rumah di Bawah Rp
-                    500 Juta Paling Dicari</p>
-                <p class="mt-2  text-[#A2A2A2]">Pasar properti hunian menunjukkan tren positif di kuartal pertama tahun
-                    2024
-                    dengan permintaan yang masih terus meningkat. Minat masyarakat untuk memperoleh tempat tinggal
-                    ternyata tetap tinggi pada masa pilpres hingga sekarang ini.</p>
-            </div>
-
-            <div class="ps-12">
-                <img src="{{ asset('images/blog_thumbnail.png') }}" class=" rounded-lg" alt="">
-                <p class="mt-2 text-[#A2A2A2]">Mar 24, 2024</p>
-                <p class="mt-2 font-semibold text-2xl text-white">Penjualan Properti Menggeliat Lagi, Rumah di Bawah Rp
-                    500 Juta Paling Dicari</p>
-                <p class="mt-2  text-[#A2A2A2]">Pasar properti hunian menunjukkan tren positif di kuartal pertama tahun
-                    2024
-                    dengan permintaan yang masih terus meningkat. Minat masyarakat untuk memperoleh tempat tinggal
-                    ternyata tetap tinggi pada masa pilpres hingga sekarang ini.</p>
-            </div>
+                
+            @endforeach
+           
 
         </div>
 
@@ -201,65 +169,36 @@
 
         <div class="grid grid-cols-2 gap-24 mt-8">
             <div class="divide-y space-y-8">
-                <div class="grid grid-cols-5 gap-6">
-                    <img src="{{ asset('images/blog_thumbnail.png') }}" class="rounded-lg col-span-2"
-                        alt="">
-                    <div class="col-span-3">
-                        <p class="mt-2 text-[#A2A2A2]">Mar 24, 2024</p>
-                        <p class="mt-2 font-semibold text-xl me-[7rem]">Cara WNA Beli Properti di Indonesia dan
-                            Persyaratannya</p>
-                    </div>
-                </div>
+                @foreach ($leftdesign as $item)
+                <a href="{{ route('blogs.show',['blog'=>$item->id]) }}">
                 <div class="grid grid-cols-5 gap-6 pt-8">
-                    <img src="{{ asset('images/blog_thumbnail.png') }}" class="rounded-lg col-span-2"
+                    <img src="{{ asset('storage/blog/'.$item->picture) }}" class="rounded-lg col-span-2"
                         alt="">
                     <div class="col-span-3">
-                        <p class="mt-2 text-[#A2A2A2]">Mar 24, 2024</p>
-                        <p class="mt-2 font-semibold text-xl me-[7rem]">Cara WNA Beli Properti di Indonesia dan
-                            Persyaratannya</p>
+                        <p class="mt-2 text-[#A2A2A2]">{{ $item->created_at->format('F j, Y') }}</p>
+                        <p class="mt-2 font-semibold text-xl me-[7rem]">{{$item->title}}</p>
                     </div>
                 </div>
-
-                <div class="grid grid-cols-5 gap-6 pt-8">
-                    <img src="{{ asset('images/blog_thumbnail.png') }}" class="rounded-lg col-span-2"
-                        alt="">
-                    <div class="col-span-3">
-                        <p class="mt-2 text-[#A2A2A2]">Mar 24, 2024</p>
-                        <p class="mt-2 font-semibold text-xl me-[7rem]">Waspada Modus Penipuan Jual Beli Properti di
-                            Malang, Korban Merugi Ratusan Juta</p>
-                    </div>
-                </div>
+                </a>
+                    
+                @endforeach
+             
             </div>
 
             <div class="divide-y space-y-8">
-                <div class="grid grid-cols-5 gap-6">
-                    <img src="{{ asset('images/blog_thumbnail.png') }}" class="rounded-lg col-span-2"
-                        alt="">
-                    <div class="col-span-3">
-                        <p class="mt-2 text-[#A2A2A2]">Mar 24, 2024</p>
-                        <p class="mt-2 font-semibold text-xl me-[7rem]">Cara WNA Beli Properti di Indonesia dan
-                            Persyaratannya</p>
-                    </div>
-                </div>
+                @foreach ($rightdesign as $item)
+                <a href="{{ route('blogs.show',['blog'=>$item->id]) }}">
                 <div class="grid grid-cols-5 gap-6 pt-8">
-                    <img src="{{ asset('images/blog_thumbnail.png') }}" class="rounded-lg col-span-2"
+                    <img src="{{ asset('storage/blog/'.$item->picture) }}" class="rounded-lg col-span-2"
                         alt="">
                     <div class="col-span-3">
-                        <p class="mt-2 text-[#A2A2A2]">Mar 24, 2024</p>
-                        <p class="mt-2 font-semibold text-xl me-[7rem]">Cara WNA Beli Properti di Indonesia dan
-                            Persyaratannya</p>
+                        <p class="mt-2 text-[#A2A2A2]">{{ $item->created_at->format('F j, Y') }}</p>
+                        <p class="mt-2 font-semibold text-xl me-[7rem]">{{$item->title}}</p>
                     </div>
                 </div>
-
-                <div class="grid grid-cols-5 gap-6 pt-8">
-                    <img src="{{ asset('images/blog_thumbnail.png') }}" class="rounded-lg col-span-2"
-                        alt="">
-                    <div class="col-span-3">
-                        <p class="mt-2 text-[#A2A2A2]">Mar 24, 2024</p>
-                        <p class="mt-2 font-semibold text-xl me-[7rem]">Waspada Modus Penipuan Jual Beli Properti di
-                            Malang, Korban Merugi Ratusan Juta</p>
-                    </div>
-                </div>
+                </a>
+                    
+                @endforeach
             </div>
 
         </div>

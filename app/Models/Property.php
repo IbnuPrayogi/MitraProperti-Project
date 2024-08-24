@@ -9,20 +9,31 @@ class Property extends Model
 {
     use HasFactory;
 
-    protected $table = "property";
+    protected $table = "properties";
 
     protected $fillable = [
-        'name',
-        'price',
-        'category',
-        'cluster_type',
-        'instalment',
-        'province',
-        'regency',
-        'district',
-        'location',
-        'village',
-        'picture'
+        'name', 'price', 'category','cluster_type', 'province', 'regency', 'district', 'village',
+        'location', 'toilet', 'bedroom', 'surface_area', 'building_area','floor', 
+        'carport', 'description', 'mosque', 'jogging', 'sports', 'child', 'pool', 
+        'additional_features', 'instalment', 'picture'
     ];
+
+    // Specify the attributes that should be cast to native types
+    protected $casts = [
+        'mosque' => 'boolean',
+        'jogging' => 'boolean',
+        'sports' => 'boolean',
+        'child' => 'boolean',
+        'pool' => 'boolean',
+        'price' => 'integer',
+        'instalment' => 'integer',
+    ];
+
+
+
+    public function nearestAreas()
+    {
+        return $this->hasMany(NearestArea::class);
+    }
 
 }

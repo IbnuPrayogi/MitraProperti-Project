@@ -14,10 +14,10 @@
 
 <body class="bg-white font-sans">
     @include('user.partials.navbar')
-    <div class="bg-[#F7F7F7] pt-24 pb-12">
+    <div class="bg-[#F7F7F7] pt-24 pb-12" style="height:600;" >
         {{-- Path --}}
         <div class="container flex items-center space-x-2 mx-auto bg-[#F4BDB9] p-4 rounded-lg text-gray-600">
-            @foreach ([['name' => 'Home', 'url' => '/'], ['name' => 'Rumah', 'url' => '/about'], ['name' => 'Bogor', 'url' => '/contact'], ['name' => 'Spring Residence at Sentul City', 'url' => '/contact']] as $link)
+            @foreach ([['name' => 'Home', 'url' => '/'], ['name' => $property->category, 'url' => '/about'], ['name' => $property->regency, 'url' => '/contact'], ['name' => $property->name, 'url' => '/contact']] as $link)
                 @if ($loop->last)
                     <span>{{ $link['name'] }}</span>
                 @else
@@ -29,23 +29,29 @@
 
         {{-- Gallery --}}
 
-        <div class="mx-auto container grid grid-rows-4 grid-flow-col gap-4 mt-10">
-            <div class="col-span-2 row-span-4 object-cover flex ">
-                <img src="{{ asset('images/dummy_property.png') }}" class="rounded-xl " alt="" loading="lazy">
-            </div>
-            <div class="row-span-2 col-span-1">
-                <img src="{{ asset('images/dummy_property.png') }}" class="rounded-xl" alt="" loading="lazy">
-            </div>
-            <div class="row-span-2 col-span-1">
-                <img src="{{ asset('images/dummy_property.png') }}" class="rounded-xl" alt="" loading="lazy">
-            </div>
-            <div class="row-span-2 col-span-1">
-                <img src="{{ asset('images/dummy_property.png') }}" class="rounded-xl" alt="" loading="lazy">
-            </div>
-            <div class="row-span-2 col-span-1">
-                <img src="{{ asset('images/dummy_property.png') }}" class="rounded-xl" alt="" loading="lazy">
+        <div class="mx-auto container grid grid-cols-1 gap-4 mt-10" style=" width: 100%;">
+            <div style="display: flex; flex-direction: row; gap: 20px; align-items: flex-start; width: 100%;">
+                <!-- Main property image covering half of the width -->
+                <div style="flex-basis: 50%; max-width: 50%;">
+                    <img src="{{ Storage::url('public/pictures/'.$property->picture) }}" 
+                         style="width: 100%; height: 320px; object-fit: cover;" 
+                         class="rounded-xl" alt="" loading="lazy">
+                </div>
+                
+                <!-- Container for other images covering the other half -->
+                <div class="grid grid-cols-2 gap-4" style="flex-basis: 50%; max-width: 50%;">
+                    @foreach($images as $image)
+                        <div>
+                            <img src="{{ Storage::url($image) }}" 
+                                 style="width: 100%; height: 150px; object-fit: cover;" 
+                                 class="rounded-xl" alt="" loading="lazy">
+                        </div>
+                    @endforeach
+                </div>
             </div>
         </div>
+        
+        
     </div>
 
     <div class="container mx-auto grid grid-cols-5 mt-8 gap-5">
@@ -53,19 +59,19 @@
         <div class="col-span-3 ">
             {{-- Card --}}
             <div class="shadow-lg rounded-lg p-8 space-y-2">
-                <p class="text-red-500 text-xl font-bold">3.2M</p>
-                <p class="text-[#A7A7A7]">Tanpa DP, Cicilan 15 Juta/ Bulan</p>
-                <p class="text-lg ">Spring Residence at Sentul City</p>
+                <p class="text-red-500 text-xl font-bold">IDR {{ number_format($property->price) }}</p>
+                <p class="text-[#A7A7A7]">Tanpa DP, Cicilan {{ $property->instalment/1000000 }} Juta/ Bulan</p>
+                <p class="text-lg ">{{ $property->name }} at {{ $property->regency }}</p>
                 <div class="inline-flex gap-2 text-[#A7A7A7]">
                     <p>Tipe 8 x 17</p>
                     <div class="border-l h-6 border-gray-300"></div>
-                    <p>LT 136m</p>
+                    <p>LT {{ $property->surface_area }}</p>
                     <div class="border-l h-6 border-gray-300"></div>
-                    <p>LB 132</p>
+                    <p>LB {{ $property->building_area}}</p>
                     <div class="border-l h-6 border-gray-300"></div>
-                    <p class="flex items-center"><span class="icon-[mdi--bed]"></span>Tipe 8 x 17</p>
+                    <p class="flex items-center"><span class="icon-[mdi--bed]"></span>{{ $property->bedroom }}</p>
                     <div class="border-l h-6 border-gray-300"></div>
-                    <p class="flex items-center"><span class="icon-[majesticons--bath-shower]"></span>Tipe 8 x 17</p>
+                    <p class="flex items-center"><span class="icon-[majesticons--bath-shower]"></span>{{ $property->toilet }}</p>
                 </div>
                 <div class="border-b border-[#DEDEDE] py-3"></div>
                 <div class="grid grid-cols-6 items-center">
@@ -83,23 +89,18 @@
 
             {{-- Property Information --}}
             <div class="p-8 space-y-2">
-                <p class="font-semibold text-xl ">Spring Residence at Sentul City</p>
+                <p class="font-semibold text-xl ">{{ $property->name }} at {{ $property->regency }}</p>
                 <div class="inline-flex gap-2 text-lg text-[#A7A7A7]">
                     <p class="flex items-center  me-3"> <span class="icon-[mdi--house-outline] text-xl me-2"></span>
-                        Rumah</p>
+                        {{ $property->category }}</p>
 
                     <p class="flex items-center  me-3"> <span class="icon-[mdi--location] text-xl me-2"></span>
-                        Spring Residence, Sentul City, Babakan Madang, Bogor, Jawa Barat, Indonesia</p>
+                        {{ $property->name }}, {{ $property->village }}, {{ $property->district }}, {{ $property->regency }}, {{ $property->province }}, Indonesia</p>
                 </div>
 
-                <p id="description-content" class="pt-10 line-clamp-2">‼️NEW HOUSE‼️Rumah Keren Tetangga AEON MALL &
-                    IKEA🥰 Lokasi nya keren! Design nya
-                    Super Aesthetic dan Mewah, Lorem, ipsum dolor sit amet consectetur adipisicing elit. Cupiditate sunt
-                    labore facilis dolorem, repellat perferendis voluptatum architecto officia obcaecati eum.
-
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corrupti maiores, nostrum est pariatur
-                    temporibus, quod vero quos itaque amet esse praesentium ex voluptatum quae minima eius! Facilis
-                    impedit temporibus esse.
+                <p id="description-content" class="pt-10 line-clamp-2">
+                    {{ $property->description }}
+                   
                 </p>
                 <button id="toggle-button" class="text-red-500 mt-2">Read more</button>
 
@@ -109,29 +110,29 @@
                     <div class="grid grid-cols-2">
                         <p class="flex items-center"><span class="icon-[streamline--arrow-move-solid] me-2"></span>Luas
                             Tanah</p>
-                        <p>200 <span>m <sup>2</sup> </span></p>
+                        <p>{{ $property->surface_area }} <span>m <sup>2</sup> </span></p>
                     </div>
 
                     <div class="grid grid-cols-2">
                         <p class="flex items-center"><span class="icon-[ic--baseline-house] me-2"></span>Luas Bangunan
                         </p>
-                        <p>200 <span>m <sup>2</sup> </span></p>
+                        <p> {{ $property->building_area }} <span>m <sup>2</sup> </span></p>
                     </div>
 
                     <div class="grid grid-cols-2">
                         <p class="flex items-center"><span class="icon-[mdi--bed] me-2"></span>Bedroom</p>
-                        <p>200</p>
+                        <p>{{ $property->bedroom }}</p>
                     </div>
 
                     <div class="grid grid-cols-2">
                         <p class="flex items-center"><span class="icon-[majesticons--bath-shower] me-2"></span>Bathroom
                         </p>
-                        <p>4</p>
+                        <p>{{ $property->toilet }}</p>
                     </div>
 
                     <div class="grid grid-cols-2">
                         <p class="flex items-center"><span class="icon-[ph--garage-fill] me-2"></span>Carport</p>
-                        <p>2</span></p>
+                        <p>{{ $property->carport }}</span></p>
                     </div>
                 </div>
 
@@ -139,12 +140,23 @@
 
                 <p class="font-semibold text-xl pt-2">Fasilitas Umum</p>
                 <div class="grid grid-cols-2">
+                    @if ($property->jogging)
                     <p class="flex items-center"><span class="icon-[fluent--run-16-filled] me-2"></span>Jogging Track
                     </p>
+                    @endif
+                    @if ($property->sports)
                     <p class="flex items-center"><span class="icon-[icon-park-solid--sport] me-2"></span>Sports Club</p>
+                    @endif
+                    @if ($property->mosque)
                     <p class="flex items-center"><span class="icon-[material-symbols--mosque] me-2"></span>Mosque</p>
+                    @endif
+                    @if ($property->child)
                     <p class="flex items-center"><span class="icon-[tabler--mood-kid-filled] me-2"></span>Children
                         Playground</p>
+                    @endif
+                
+                    
+                    
                 </div>
 
 
@@ -170,8 +182,8 @@
         <div class="col-span-2 ">
             <div class="h-auto p-8 space-y-3 rounded-lg shadow-lg">
                 <p class="text-lg">Mulai dari</p>
-                <p class="text-red-500 font-semibold text-2xl">3.200.000.000</p>
-                <p class="text-lg">Tanpa DP, Cicilan 15 Juta/ Bulan</p>
+                <p class="text-red-500 font-semibold text-2xl">IDR {{ number_format($property->price) }} 
+                <p class="text-lg">Tanpa DP, Cicilan {{ number_format($property->instalment/1000000) }} Juta/ Bulan</p>
                 <p class="text-[#A7A7A7]">Dapatkan Update Promo & Harga Terbaru</p>
                 <input class="w-full rounded-lg bg-[#F9F9F9] border-2 border-slate-300" type="text"
                     placeholder="Nama Lengkap">

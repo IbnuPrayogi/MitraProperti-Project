@@ -92,3 +92,11 @@ Route::get('/about', function () {
 Route::get('/blog-detail', function() {
     return view('user.blog-detail');
 });
+
+Route::get('/calculator', function() {
+    return view('user.calculator');
+});
+
+Route::get('/kerjasama', function() {
+    return view('user.kerjasama');
+});

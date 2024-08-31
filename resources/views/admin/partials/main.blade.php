@@ -50,7 +50,33 @@
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 
+  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
   @yield('additional-styles')
+
+  <style>
+    .user-panel {
+        display: flex;
+        align-items: center;
+        margin-top: 1rem;
+        padding-bottom: 1rem;
+        margin-bottom: 1rem;
+    }
+
+    .user-icon {
+        font-size: 2rem; /* Adjust size */
+        color: white; /* Optional: Change color */
+    }
+
+    .info a {
+        font-size: 1.25rem; /* Adjust size */
+        font-weight: bold; /* Optional: Make text bold */
+        margin-left: 10px; /* Space between icon and text */
+        text-decoration: none; /* Remove underline */
+        color: #000; /* Text color */
+    }
+</style>
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">

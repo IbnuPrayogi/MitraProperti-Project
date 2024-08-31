@@ -110,4 +110,9 @@
     $('#locationFilter, #categoryFilter').on('change', filterTable);
   });
 </script>
+<script>
+  
+</script>
+
+
 @endsection

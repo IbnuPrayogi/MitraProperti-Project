@@ -13,7 +13,7 @@ class UserPropertyController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function fetchRUmah()
+    public function fetchRumah()
     {
         $property=Property::where('category','home')->get();
         $title = "Rumah";
@@ -192,12 +192,15 @@ class UserPropertyController extends Controller
     public function show($id)
     {
         $property = Property::where('id',$id)->get()->first();
+        
 
         $directoryPath = "public/images/".$property->id."/";
-    
+        
         // Check if directory exists
         if (!Storage::exists($directoryPath)) {
-            return view('user.detail', ['property','images' => []]); // If no directory, return an empty array
+         
+           
+            return view('user.detail',compact('property'), ['images' => []]); 
         }
     
         // Get all files from the directory
@@ -207,9 +210,8 @@ class UserPropertyController extends Controller
         $images = array_filter($files, function ($file) {
             return preg_match('/\.(jpeg|jpg|png|gif)$/i', $file);
         });
+        
 
-   
-   
         return view('user.detail',compact('property','images'));
         //
     }
@@ -236,5 +238,40 @@ class UserPropertyController extends Controller
     public function destroy(Property $property)
     {
         //
+    }
+
+    public function countCredit(Request $request)
+    {
+        // Validasi input
+        $validated = $request->validate([
+            'penghasilanBulanan' => 'required|numeric',
+            'sukuBungaTahunan' => 'required|numeric',
+            'jangkaWaktuTahun' => 'required|integer',
+            'cicilanLainnya' => 'required|integer',
+        ]);
+
+        // Ambil data dari form
+        $penghasilanBulanan = $validated['penghasilanBulanan'];
+        $sukuBungaTahunan = $validated['sukuBungaTahunan'];
+        $jangkaWaktuTahun = $validated['jangkaWaktuTahun'];
+        $cicilanLainnya = $validated['cicilanLainnya'];
+
+        // Asumsi: 40% dari penghasilan untuk kemampuan cicilan
+        $persentaseKemampuanCicilan = 0.4;
+        $kemampuanCicilan = ($penghasilanBulanan * $persentaseKemampuanCicilan)-$cicilanLainnya;
+
+        // Mengubah suku bunga tahunan menjadi suku bunga bulanan (dalam desimal)
+        $sukuBungaBulanan = $sukuBungaTahunan / 12 / 100;
+
+        // Mengubah jangka waktu kredit dari tahun ke bulan
+        $jangkaWaktuBulan = $jangkaWaktuTahun * 12;
+
+        // Rumus untuk menghitung limit kredit menggunakan anuitas
+        $limitKredit = $kemampuanCicilan * ((pow(1 + $sukuBungaBulanan, $jangkaWaktuBulan) - 1) / ($sukuBungaBulanan * pow(1 + $sukuBungaBulanan, $jangkaWaktuBulan)));
+
+
+
+        // Kembalikan hasil ke view
+        return view('user.calculator', compact('limitKredit','kemampuanCicilan'));
     }
 }

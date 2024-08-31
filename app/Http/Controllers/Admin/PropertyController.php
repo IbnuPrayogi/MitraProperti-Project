@@ -7,11 +7,12 @@ use App\Models\Village;
 use App\Models\District;
 use App\Models\Property;
 use App\Models\Province;
+use App\Models\NearestArea;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\StorePropertyRequest;
 use App\Http\Requests\UpdatePropertyRequest;
-use App\Models\NearestArea;
 
 class PropertyController extends Controller
 {
@@ -190,5 +191,28 @@ class PropertyController extends Controller
         $property->delete();
 
         return redirect()->route('property.index')->with('success', 'Property deleted successfully');
+    }
+
+
+    public function filteredProperties($category)
+    {
+       
+
+        if ($category) {
+            $properties = Property::where('category', $category)->get();
+        } else {
+            $properties = Property::all();
+        }
+       
+
+        $regencies = Regency::all();
+        $categories = Property::select('category')->distinct()->get();
+   
+
+        return view('admin.property.index', [
+            'properties' => $properties,
+            'regencies' => $regencies,
+            'categories' => $categories
+        ]);
     }
 }

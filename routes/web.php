@@ -23,6 +23,8 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     Route::resource('property',PropertyController::class);
+    Route::get('/property/filtered/{category}', [PropertyController::class, 'filteredProperties'])->name('properties.filtered');
+
     Route::resource('blog',BlogController::class);
     Route::get('/getRegencies/{provinceId}', [LocationController::class, 'getRegencies']);
     Route::get('/getDistricts/{regencyId}', [LocationController::class, 'getDistricts']);
@@ -40,6 +42,11 @@ Route::get('/properti/kavling', [UserPropertyController::class, 'fetchKavling'])
 Route::get('/properti/gudang', [UserPropertyController::class, 'fetchGudang'])->name('userproperty.fetchgudang');
 Route::get('/properti/office', [UserPropertyController::class, 'fetchOffice'])->name('userproperty.fetchoffice');
 Route::get('/properti/ruko', [UserPropertyController::class, 'fetchRuko'])->name('userproperty.fetchruko');
+
+
+
+Route::post('/count-credits', [UserPropertyController::class, 'countCredit'])->name('count.credits');
+
 
 
 
@@ -94,7 +101,7 @@ Route::get('/blog-detail', function() {
 });
 
 Route::get('/calculator', function() {
-    return view('user.calculator');
+    return view('user.calculator',['limitKredit'=>0,'kemampuanCicilan'=>0]);
 });
 
 Route::get('/kerjasama', function() {

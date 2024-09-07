@@ -7,9 +7,12 @@
         <p class="text-center text-[1.25rem] font-light mb-6">Dapatkan informasi lengkap dan penawaran menarik seputar
             hunian idaman yang Anda inginkan.</p>
 
-        <button class="py-2 px-4 text-[#2D364C] bg-white rounded-md font-light">
-            Hubungi Kami
-        </button>
+
+        <a href="/contact">
+            <button class="py-2 px-4 text-[#2D364C] bg-white rounded-md font-light">
+                Hubungi Kami
+            </button>
+        </a>
     </div>
 
     {{-- Links --}}

@@ -93,6 +93,10 @@ Route::get('/about', function () {
     return view('user.about-us');
 });
 
+Route::get('/kerjasama', function () {
+    return view('user.kerjasama');
+});
+
 
 
 

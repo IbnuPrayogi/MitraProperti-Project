@@ -137,8 +137,6 @@
                 </div>
                 <img src="{{ asset('images/content_creator.png') }}" class="rounded-lg col-span-2" alt="">
             </div>
-
-
         </div>
     </div>
     @include('user.partials.footer')

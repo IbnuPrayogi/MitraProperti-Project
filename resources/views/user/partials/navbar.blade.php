@@ -166,7 +166,7 @@
                             <a href="/kerjasama"><li>
                                 Kerjasama Bisnis
                             </li></a>
-                           <a href="/kerjasama"><li>Kalkulator KPR</li></a>
+                           <a href="/calculator"><li>Kalkulator KPR</li></a>
                         </ul>
 
                     </div>

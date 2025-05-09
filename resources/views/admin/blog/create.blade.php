@@ -8,7 +8,7 @@
                 <!-- general form elements -->
                 <div class="card card-primary">
                     <div class="card-header">
-                        <h3 class="card-title">Add New Property</h3>
+                        <h3 class="card-title">Add New Blog</h3>
                     </div>
                     <!-- /.card-header -->
                     <!-- form start -->
@@ -21,7 +21,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="provincies">Category</label>
-                                <select class="form-control" id="provincies" name="province" required>
+                                <select class="form-control" id="category" name="category" required>
                                     <option value="">Select Category</option>
                                      <option value="panduan">Panduan Property</option>
                                      <option value="tips">Tips & Trick</option>

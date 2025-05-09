@@ -40,6 +40,7 @@ class BlogController extends Controller
      */
     public function store(BlogRequest $request)
     {
+        
         $data = $request->validated();
         
       
@@ -47,6 +48,8 @@ class BlogController extends Controller
             $data['picture'] = $request->file('picture')->getClientOriginalName();
             $request->file('picture')->storeAs('blog', $data['picture'], 'public');
         }
+
+        
 
         Blog::create($data);
 
